@@ -57,8 +57,17 @@ known_resources = \
 
 
 def process_psiphon_pro_android_strings():
-    langs = {'ar': 'ar', 'de': 'de', 'es': 'es', 'fr': 'fr', 'id': 'id',
-             'pt_BR': 'pt-rBR', 'ru': 'ru', 'tr': 'tr'}
+    langs = {
+        'ar': 'ar',
+        'de': 'de',
+        'es': 'es',
+        'fr': 'fr',
+        'id': 'id',
+        'nl': 'nl',
+        'pt_BR': 'pt-rBR',
+        'ru': 'ru',
+        'tr': 'tr'
+    }
     process_resource('psiphon-pro-android-strings',
                      lambda lang: '../Android/app/src/main/res/values-%s/pro-strings.xml' % lang,
                      None,
