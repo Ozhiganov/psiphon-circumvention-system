@@ -28,6 +28,7 @@
 class LocalProxy;
 class ILocalProxyStatsCollector;
 class IReconnectStateReceiver;
+class IUpgradePaver;
 class ITransport;
 
 
@@ -58,8 +59,9 @@ public:
             const StopInfo& stopInfo,
             ITransport* transport,
             IReconnectStateReceiver* reconnectStateReceiver,
+            IUpgradePaver* upgradePaver,
             ILocalProxyStatsCollector* statsCollector,
-            ServerEntry* tempConnectServerEntry=NULL,
+            const ServerEntry* tempConnectServerEntry=NULL,
             bool skipApplySystemProxySettings=false);
 
     // Blocks until the transport disconnects.
@@ -76,6 +78,7 @@ public:
     // Exception class
     class TryNextServer : public std::exception { };
     class PermanentFailure : public std::exception { };
+    class NoServers : public std::exception { };
 
 private:
     void Cleanup();

@@ -47,10 +47,8 @@
 #include <map>
 #include <regex>
 #include <sstream>
+#include <filesystem>
 #include <json/json.h>
 #include <mshtmhst.h>
 #include <urlmon.h>
 #include <shellapi.h>
-
-// Boost stuff
-#include <boost/shared_ptr.hpp>

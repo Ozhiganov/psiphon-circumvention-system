@@ -76,7 +76,8 @@ void ConnectionManager::OpenHomePages(const TCHAR* defaultHomePage/*=0*/, bool a
         {
             urls.push_back(defaultHomePage);
         }
-        OpenBrowser(urls);
+        OpenBrowser(urls[0]);
+        m_currentSessionInfo.RotateHomepages();
     }
 }
 
@@ -206,12 +207,6 @@ void ConnectionManager::Start()
 
     m_transport = TransportRegistry::New(Settings::Transport());
 
-    if (!m_transport->ServerWithCapabilitiesExists())
-    {
-        my_print(NOT_SENSITIVE, false, _T("No servers support this protocol."));
-        return;
-    }
-
     m_startSplitTunnel = Settings::SplitTunnel();
 
     GlobalStopSignal::Instance().ClearStopSignal(STOP_REASON_ALL &~ STOP_REASON_EXIT);
@@ -224,7 +219,8 @@ void ConnectionManager::Start()
 
     SetState(CONNECTION_MANAGER_STATE_STARTING);
 
-    if (!(m_thread = CreateThread(0, 0, ConnectionManagerStartThread, (void*)this, 0, 0)))
+    m_thread = CreateThread(0, 0, ConnectionManagerStartThread, (void*)this, 0, 0);
+    if (!m_thread)
     {
         my_print(NOT_SENSITIVE, false, _T("Start: CreateThread failed (%d)"), GetLastError());
 
@@ -247,6 +243,9 @@ DWORD WINAPI ConnectionManager::ConnectionManagerStartThread(void* object)
     // We only want to open the home page once per retry loop.
     // This prevents auto-reconnect from opening the home page again.
     bool homePageOpened = false;
+
+    // Keep track of whether we've already hit a NoServers exception.
+    bool noServers = false;
 
     //
     // Repeatedly attempt to connect.
@@ -288,15 +287,7 @@ DWORD WINAPI ConnectionManager::ConnectionManagerStartThread(void* object)
             if (!manager->m_transport->ServerWithCapabilitiesExists())
             {
                 my_print(NOT_SENSITIVE, false, _T("No known servers support this transport"), __TFUNCTION__);
-                if (manager->m_transport->RetryOnProtocolNotSupported())
-                {
-                    manager->m_transport->RotateTargetProtocols();
-                    throw TransportConnection::TryNextServer();
-                }
-                else
-                {
-                    throw ConnectionManager::Abort();
-                }
+                throw TransportConnection::NoServers();
             }
 
             //
@@ -315,6 +306,7 @@ DWORD WINAPI ConnectionManager::ConnectionManagerStartThread(void* object)
                     StopInfo(&GlobalStopSignal::Instance(), STOP_REASON_ALL),
                     manager->m_transport,
                     manager,    // ILocalProxyStatsCollector
+                    manager,    // IUpgradePaver
                     manager);   // IReconnectStateReceiver
             }
             catch (TransportConnection::TryNextServer&)
@@ -341,7 +333,8 @@ DWORD WINAPI ConnectionManager::ConnectionManagerStartThread(void* object)
                 if (!manager->m_upgradeThread ||
                     WAIT_OBJECT_0 == WaitForSingleObject(manager->m_upgradeThread, 0))
                 {
-                    if (!(manager->m_upgradeThread = CreateThread(0, 0, ConnectionManagerUpgradeThread, manager, 0, 0)))
+                    manager->m_upgradeThread = CreateThread(0, 0, ConnectionManagerUpgradeThread, manager, 0, 0);
+                    if (!manager->m_upgradeThread)
                     {
                         my_print(NOT_SENSITIVE, false, _T("Upgrade: CreateThread failed (%d)"), GetLastError());
                     }
@@ -385,6 +378,19 @@ DWORD WINAPI ConnectionManager::ConnectionManagerStartThread(void* object)
             manager->SetState(CONNECTION_MANAGER_STATE_STOPPED);
             break;
         }
+        catch (TransportConnection::NoServers&)
+        {
+            my_print(NOT_SENSITIVE, true, _T("%s: caught NoServers"), __TFUNCTION__);
+            // On the first NoServers we fall through so that we can FetchRemoteServerList.
+            // On the second NoServers we bail out.
+            if (noServers)
+            {
+                manager->SetState(CONNECTION_MANAGER_STATE_STOPPED);
+                break;
+            }
+            // else fall through
+            noServers = true;
+        }
         catch (StopSignal::UnexpectedDisconnectStopException& ex)
         {
             my_print(NOT_SENSITIVE, true, _T("%s: caught StopSignal::UnexpectedDisconnectStopException"), __TFUNCTION__);
@@ -418,13 +424,6 @@ DWORD WINAPI ConnectionManager::ConnectionManagerStartThread(void* object)
             my_print(NOT_SENSITIVE, true, _T("%s: caught ConnectionManager::Abort"), __TFUNCTION__);
             manager->SetState(CONNECTION_MANAGER_STATE_STOPPED);
             break;
-        }
-
-        // Rotate target protocols on unexpected disconnect -- when the tunnel connected, but only for a short time
-        if (tunnelStartTime != 0 &&
-            GetTickCountDiff(tunnelStartTime, GetTickCount()) < TARGET_PROTOCOL_ROTATION_SESSION_DURATION_THRESHOLD_MS)
-        {
-            manager->m_transport->RotateTargetProtocols();
         }
 
         // Failed to connect to the server. Try the next one.
@@ -478,7 +477,6 @@ void ConnectionManager::DoPostConnect(const SessionInfo& sessionInfo, bool openH
 
         tstring connectedRequestPath = GetConnectRequestPath(m_transport);
 
-        DWORD start = GetTickCount();
         string response;
         if (ServerRequest::MakeRequest(
                             ServerRequest::ONLY_IF_TRANSPORT,
@@ -701,7 +699,7 @@ void ConnectionManager::GetUpgradeRequestInfo(SessionInfo& sessionInfo, tstring&
 
 // ==== General Session Functions =============================================
 
-void ConnectionManager::FetchRemoteServerList(void)
+void ConnectionManager::FetchRemoteServerList()
 {
     // Note: not used by CoreTransport
 
@@ -757,7 +755,7 @@ void ConnectionManager::FetchRemoteServerList(void)
             REMOTE_SERVER_LIST_SIGNATURE_PUBLIC_KEY,
             response.c_str(),
             response.length(),
-            false,
+            false, // zipped, not gzipped
             serverEntryList))
     {
         my_print(NOT_SENSITIVE, false, _T("Verify remote server list failed"));
@@ -817,7 +815,6 @@ DWORD WINAPI ConnectionManager::ConnectionManagerUpgradeThread(void* object)
         manager->GetUpgradeRequestInfo(sessionInfo, downloadRequestPath);
 
         // Download new binary
-        DWORD start = GetTickCount();
         HTTPSRequest httpsRequest;
         if (!httpsRequest.MakeRequest(
                 UTF8ToWString(UPGRADE_ADDRESS).c_str(),
@@ -851,7 +848,7 @@ DWORD WINAPI ConnectionManager::ConnectionManagerUpgradeThread(void* object)
                     UPGRADE_SIGNATURE_PUBLIC_KEY,
                     downloadResponse.c_str(),
                     downloadResponse.length(),
-                    true, // compressed
+                    true, // gzip compressed
                     upgradeData))
             {
                 // Data in the package is Base64 encoded
@@ -971,10 +968,20 @@ void ConnectionManager::UpdateCurrentSessionInfo(const SessionInfo& sessionInfo)
 
     try
     {
-        TransportRegistry::AddServerEntries(
-            m_currentSessionInfo.GetDiscoveredServerEntries(),
-            // CoreTransport does not provide a ServerEntry, but VPNTransport does.
-            m_currentSessionInfo.HasServerEntry() ? &m_currentSessionInfo.GetServerEntry() : 0);
+        // CoreTransport does not provide a ServerEntry, but VPNTransport does.
+        if (m_currentSessionInfo.HasServerEntry())
+        {
+            const auto& currentServerEntry = m_currentSessionInfo.GetServerEntry();
+            TransportRegistry::AddServerEntries(
+                m_currentSessionInfo.GetDiscoveredServerEntries(),
+                &currentServerEntry);
+        }
+        else
+        {
+            TransportRegistry::AddServerEntries(
+                m_currentSessionInfo.GetDiscoveredServerEntries(),
+                nullptr);
+        }
     }
     catch (std::exception &ex)
     {
@@ -997,11 +1004,12 @@ void ConnectionManager::SendFeedback(LPCWSTR unicodeFeedbackJSON)
     if (!m_feedbackThread ||
         WAIT_OBJECT_0 == WaitForSingleObject(m_feedbackThread, 0))
     {
-        if (!(m_feedbackThread = CreateThread(
-                                    0,
-                                    0,
-                                    ConnectionManager::ConnectionManagerFeedbackThread,
-                                    (void*)&g_feedbackThreadData, 0, 0)))
+        m_feedbackThread = CreateThread(
+            0,
+            0,
+            ConnectionManager::ConnectionManagerFeedbackThread,
+            (void*)&g_feedbackThreadData, 0, 0);
+        if (!m_feedbackThread)
         {
             my_print(NOT_SENSITIVE, false, _T("%s: CreateThread failed (%d)"), __TFUNCTION__, GetLastError());
             PostMessage(g_hWnd, WM_PSIPHON_FEEDBACK_FAILED, 0, 0);

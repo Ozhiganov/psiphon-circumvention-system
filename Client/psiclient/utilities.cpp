@@ -29,14 +29,20 @@
 #include <WinInet.h>
 #include "utilities.h"
 #include "stopsignal.h"
-#include "cryptlib.h"
+#include "diagnostic_info.h"
+
+#pragma warning(push, 0)
+#pragma warning(disable: 4244)
 #include "cryptlib.h"
 #include "rsa.h"
 #include "base64.h"
 #include "osrng.h"
 #include "modes.h"
 #include "hmac.h"
-#include "diagnostic_info.h"
+#pragma warning(pop)
+
+
+using namespace std::experimental;
 
 
 extern HINSTANCE g_hInst;
@@ -160,8 +166,10 @@ bool ExtractExecutable(
 
 
 // Caller can check GetLastError() on failure
-bool GetTempPath(tstring& path)
+bool GetTempPath(tstring& o_path)
 {
+    o_path.clear();
+
     DWORD ret;
     TCHAR tempPath[MAX_PATH];
     // http://msdn.microsoft.com/en-us/library/aa364991%28v=vs.85%29.aspx notes
@@ -172,13 +180,67 @@ bool GetTempPath(tstring& path)
         return false;
     }
 
-    path = tempPath;
+    o_path = tempPath;
+    return true;
+}
+
+
+// Makes an absolute path to a unique temp directory.
+// If `create` is true, the directory will also be created.
+// Returns true on success, false otherwise. Caller can check GetLastError() on failure.
+bool GetUniqueTempDir(tstring& o_path, bool create)
+{
+    o_path.clear();
+
+    tstring tempPath;
+    if (!GetTempPath(tempPath)) 
+    {
+        return false;
+    }
+
+    tstring guid;
+    if (!MakeGUID(guid)) 
+    {
+        return false;
+    }
+
+    auto tempDir = filesystem::path(tempPath).append(guid);
+
+    if (create && !CreateDirectory(tempDir.tstring().c_str(), NULL)) {
+        return false;
+    }
+
+    o_path = tempDir.tstring();
+
+    return true;
+}
+
+
+// Makes a GUID string. Returns true on success, false otherwise.
+bool MakeGUID(tstring& o_guid) {
+    o_guid.clear();
+
+    GUID g;
+    if (CoCreateGuid(&g) != S_OK) 
+    {
+        return false;
+    }
+
+    TCHAR guidString[128];
+
+    if (StringFromGUID2(g, guidString, sizeof(guidString)/sizeof(TCHAR)) <= 0) 
+    {
+        return false;
+    }
+
+    o_guid = guidString;
+    
     return true;
 }
 
 
 // Caller can check GetLastError() on failure
-bool GetShortPathName(const tstring& path, tstring& shortPath)
+bool GetShortPathName(const tstring& path, tstring& o_shortPath)
 {
     DWORD ret = GetShortPathName(path.c_str(), NULL, 0);
     if (ret == 0)
@@ -192,7 +254,7 @@ bool GetShortPathName(const tstring& path, tstring& shortPath)
         delete[] buffer;
         return false;
     }
-    shortPath = buffer;
+    o_shortPath = buffer;
     delete[] buffer;
     return true;
 }
@@ -218,7 +280,7 @@ bool WriteFile(const tstring& filename, const string& data)
 
 
 DWORD WaitForConnectability(
-        int port,
+        USHORT port,
         DWORD timeout,
         HANDLE process,
         const StopInfo& stopInfo)
@@ -323,7 +385,11 @@ bool TestForOpenPort(int& targetPort, int maxIncrement, const StopInfo& stopInfo
     {
         if (targetPort > 0 && targetPort <= 0xFFFF)
         {
-            if (ERROR_SUCCESS != WaitForConnectability(targetPort, 100, 0, stopInfo))
+            if (ERROR_SUCCESS != WaitForConnectability(
+                (USHORT)targetPort, 
+                100, 
+                0, 
+                stopInfo))
             {
                 return true;
             }
@@ -676,95 +742,109 @@ bool ReadRegistryStringValue(LPCSTR name, string& value)
 {
     value.clear();
 
-    bool success = false;
     HKEY key = 0;
-    DWORD bufferLength = 0;
-    char* buffer = 0;
-    DWORD type;
-
-    if (ERROR_SUCCESS == RegOpenKeyEx(
+    if (ERROR_SUCCESS != RegOpenKeyEx(
                             HKEY_CURRENT_USER,
                             LOCAL_SETTINGS_REGISTRY_KEY,
                             0,
                             KEY_READ,
-                            &key) &&
+                            &key))
+    {
+        return false;
+    }
 
-        ERROR_SUCCESS == RegQueryValueExA(
+    auto closeKey = finally([=]() { RegCloseKey(key); });
+
+    DWORD bufferLength = 0;
+    if (ERROR_SUCCESS != RegQueryValueExA(
                             key,
                             name,
                             0,
                             0,
                             NULL,
-                            &bufferLength) &&
+                            &bufferLength))
+    {
+        return false;
+    }
 
-        (buffer = new char[bufferLength + 1]) &&
+    // resize to string length excluding the terminating null character
+    if (bufferLength > 0)
+    {
+        value.resize(bufferLength - 1);
+    }
 
-        ERROR_SUCCESS == RegQueryValueExA(
+    DWORD type;
+    if (ERROR_SUCCESS != RegQueryValueExA(
                             key,
                             name,
                             0,
                             &type,
-                            (LPBYTE)buffer,
-                            &bufferLength) &&
-        type == REG_SZ)
+                            (LPBYTE)value.c_str(),
+                            &bufferLength) ||
+        type != REG_SZ)
     {
-        buffer[bufferLength] = '\0';
-        value = buffer;
-        success = true;
+        return false;
     }
-
-    delete[] buffer;
-    RegCloseKey(key);
-
-    return success;
+    
+    return true;
 }
 
 bool ReadRegistryStringValue(LPCSTR name, wstring& value)
 {
     value.clear();
 
-    bool success = false;
-    HKEY key = 0;
-    DWORD bufferLength = 0;
-    wchar_t* buffer = 0;
-    DWORD type;
     wstring wName = UTF8ToWString(name);
 
-    if (ERROR_SUCCESS == RegOpenKeyEx(
+    HKEY key = 0;
+    if (ERROR_SUCCESS != RegOpenKeyEx(
                             HKEY_CURRENT_USER,
                             LOCAL_SETTINGS_REGISTRY_KEY,
                             0,
                             KEY_READ,
-                            &key) &&
-
-        ERROR_SUCCESS == RegQueryValueExW(
+                            &key))
+    {
+        return false;
+    }
+    
+    auto closeKey = finally([=]() { RegCloseKey(key); });
+    
+    DWORD bufferLength = 0;
+    if (ERROR_SUCCESS != RegQueryValueExW(
                             key,
                             wName.c_str(),
                             0,
                             0,
                             NULL,
-                            &bufferLength) &&
+                            &bufferLength))
+    {
+        return false;
+    }
 
-        (buffer = new wchar_t[bufferLength + 1]) &&
+    // bufferLength is the size of the data in bytes.
+    if (bufferLength % sizeof(wchar_t) != 0) {
+        return false;
+    }
 
-        ERROR_SUCCESS == RegQueryValueExW(
+    // resize to string length excluding the terminating null character
+    if (bufferLength > 0)
+    {
+        value.resize((bufferLength / sizeof(wchar_t)) - 1);
+    }
+
+    DWORD type;
+    if (ERROR_SUCCESS != RegQueryValueExW(
                             key,
                             wName.c_str(),
                             0,
                             &type,
-                            (LPBYTE)buffer,
-                            &bufferLength) &&
-        type == REG_SZ)
+                            (LPBYTE)value.c_str(),
+                            &bufferLength) ||
+        type != REG_SZ)
     {
-        buffer[bufferLength] = '\0';
-        value = buffer;
-        success = true;
+        return false;
     }
 
-    delete[] buffer;
-    RegCloseKey(key);
-
-    return success;
+    return true;
 }
 
 
@@ -932,21 +1012,21 @@ string Dehexlify(const string& input)
     output.reserve(len / 2);
     for (size_t i = 0; i < len; i += 2)
     {
-        char a = toupper(input[i]);
+        char a = (char)toupper(input[i]);
         const char* p = std::lower_bound(lut, lut + 16, a);
         if (*p != a)
         {
             throw std::invalid_argument("Dehexlify: not a hex digit");
         }
 
-        char b = toupper(input[i + 1]);
+        char b = (char)toupper(input[i + 1]);
         const char* q = std::lower_bound(lut, lut + 16, b);
         if (*q != b)
         {
             throw std::invalid_argument("Dehexlify: not a hex digit");
         }
 
-        output.push_back(((p - lut) << 4) | (q - lut));
+        output.push_back((char)(((p - lut) << 4) | (q - lut)));
     }
 
     return output;
@@ -1372,11 +1452,14 @@ bool PublicKeyEncryptData(const char* publicKey, const char* plaintext, string& 
         // Wrap the keys
         //
 
+#pragma warning(push, 0)
+#pragma warning(disable: 4239)
         CryptoPP::RSAES_OAEP_SHA_Encryptor rsaEncryptor(
             CryptoPP::StringSource(
                 publicKey,
                 true,
                 new CryptoPP::Base64Decoder()));
+#pragma warning(pop)
 
         CryptoPP::StringSource(
             encryptionKey.data(),
@@ -1474,8 +1557,16 @@ HRESULT SetProcessDpiAwareness(PROCESS_DPI_AWARENESS value)
 {
     // In the no-op/unsupported case we're going to return success.
     HRESULT res = S_OK;
+    
+    HINSTANCE hinstSHCORE = NULL;
 
-    HINSTANCE hinstSHCORE = LoadLibrary(TEXT("SHCORE.DLL"));
+    static const int maxPathBufferSize = MAX_PATH + 1;
+    TCHAR SystemDirectoryPathBuffer[maxPathBufferSize];
+    if (GetSystemDirectory(SystemDirectoryPathBuffer, maxPathBufferSize))
+    {
+        tstring libraryPath = tstring(SystemDirectoryPathBuffer) + TEXT("\\SHCORE.DLL");
+        hinstSHCORE = LoadLibrary(libraryPath.c_str());
+    }
 
     if (hinstSHCORE)
     {
@@ -1498,7 +1589,15 @@ HRESULT GetDpiForMonitor(HMONITOR hmonitor, MONITOR_DPI_TYPE dpiType, UINT *dpiX
 {
     HRESULT res = ERROR_NOT_SUPPORTED;
 
-    HINSTANCE hinstSHCORE = LoadLibrary(TEXT("SHCORE.DLL"));
+    HINSTANCE hinstSHCORE = NULL;
+    
+    static const int maxPathBufferSize = MAX_PATH + 1;
+    TCHAR SystemDirectoryPathBuffer[maxPathBufferSize];
+    if (GetSystemDirectory(SystemDirectoryPathBuffer, maxPathBufferSize))
+    {
+        tstring libraryPath = tstring(SystemDirectoryPathBuffer) + TEXT("\\SHCORE.DLL");
+        hinstSHCORE = LoadLibrary(TEXT("SHCORE.DLL"));
+    }
 
     if (hinstSHCORE)
     {
