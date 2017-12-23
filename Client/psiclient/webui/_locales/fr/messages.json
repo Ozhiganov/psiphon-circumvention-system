@@ -4,7 +4,7 @@
         "description": "Appears in the notification area balloon when Psiphon is in the process of connecting to a server"
     },
     "settings#local-proxy-ports#error-modal-body-http": {
-        "message": "<p>\nVous avez configuré Psiphon pour qu'il utilise un port local spécifique pour son serveur mandataire HTTP.<br>\nCependant, il semble que ce port est déjà utilisé et donc, Psiphon ne peut pas s'en servir.\n</p>\n<p>\nVeuillez changer la valeur de port de mandataire HTTP configurée et ressayer. Nous vous recommandons de supprimer la valeur afin que Psiphon puisse choisir automatiquement un port disponible.\n</p>",
+        "message": "<p>\nVous avez configuré Psiphon pour qu’il utilise un port local spécifique pour son serveur mandataire HTTP.<br>\nCependant, il semble que ce port est déjà utilisé et donc, Psiphon ne peut pas s’en servir.\n</p>\n<p>\nVeuillez changer la valeur de port de mandataire HTTP configurée et ressayer. Nous vous recommandons de supprimer la valeur afin que Psiphon puisse choisir automatiquement un port disponible.\n</p>",
         "description": "Main text in the 'Local Proxy Port Conflict' dialog box. This is shown when the conflict is with the HTTP proxy port, rather than the SOCKS proxy port."
     },
     "settings#egress-region#select-jp": {
@@ -12,7 +12,7 @@
         "description": "One of the choices in the 'Psiphon Server Region' combo box. If selected, a Psiphon server in Japan will be used."
     },
     "settings#upstream-proxy#error-modal-body-configured": {
-        "message": "Vous avez configuré Psiphon pour qu'il utilise un serveur «mandataire ascendant ».<br>\nCependant, il nous semble impossible de nous connecter à un serveur Psiphon par ce mandataire.<br>\nVeuillez corriger les paramètres et ressayer.",
+        "message": "Vous avez configuré Psiphon pour qu’il utilise un serveur «mandataire ascendant ».<br>\nCependant, il nous semble impossible de nous connecter à un serveur Psiphon par ce mandataire.<br>\nVeuillez corriger les paramètres et ressayer.",
         "description": "Main text in the 'Upstream Proxy Error' dialog box. This is shown when the user has directly altered these settings, and those settings are (probably) erroneous."
     },
     "logs#show-debug-label": {
@@ -24,7 +24,7 @@
         "description": "Text on the tab that, if the user clicks on it, switches to the 'Logs' view. In that view the user can see the status messages that Psiphon produces as it connects, disconnects, etc."
     },
     "settings#upstream-proxy#set-domain-without-authentication-error-msg": {
-        "message": "En définissant un nom d'hôte, il est aussi exigé de définir un nom d'utilisateur et un mot de passe",
+        "message": "En définissant un nom d’hôte, il est aussi exigé de définir un nom d’utilisateur et un mot de passe",
         "description": "Error message that is shown if the user enters a value for 'Domain', but not 'Username' and 'Password' -- this is not valid, as domain authentication requires a Username and Password. Alternatively, the user can leave all fields blank to allow the automatic behaviour."
     },
     "settings#error-alert": {
@@ -32,11 +32,11 @@
         "description": "This alert is shown to the user if they enter incorrect values into one or more of the settings fields."
     },
     "settings#local-proxy-ports#reason": {
-        "message": "Si vous utilisez sur votre ordinateur des outils demandant une configuration manuelle afin de fonctionner avec Psiphon, Psiphon devrait systématiquement utiliser les mêmes numéros de port local. Si vous n'avez pas de raison de spécifier des numéros de port, vous devriez permettre à Psiphon de les choisir automatiquement pour aider à éviter les conflits.",
+        "message": "Si vous utilisez sur votre ordinateur des outils demandant une configuration manuelle afin de fonctionner avec Psiphon, Psiphon devrait systématiquement utiliser les mêmes numéros de port local. Si vous n’avez pas de raison de spécifier des numéros de port, vous devriez permettre à Psiphon de les choisir automatiquement pour aider à éviter les conflits.",
         "description": "Help text in the 'Local Proxy Ports' settings area. This explains to the user why they might want to override the default (automatic) settings values."
     },
     "appbackend#minimized-to-systray-body": {
-        "message": "Cliquez sur l'icône pour restaurer l'application",
+        "message": "Cliquez sur l’icône pour restaurer l’application",
         "description": "Appears in the notification area balloon when Psiphon has been minimized to the Windows' notification area (aka 'system tray' aka 'systray', the area of the taskbar with the clock, battery indicator, and other icons)."
     },
     "banner#sponsored-by": {
@@ -60,7 +60,7 @@
         "description": "Message in the big connection status box telling the user that Psiphon is currently connected to the network."
     },
     "settings#split-tunnel#reason": {
-        "message": "Les sites Web de votre pays d'origine ne sont généralement pas bloqués et l'activation de cette option vous donnera un accès plus rapide vers ces sites, pouvant parfois aussi réduire les coûts d'utilisation de données de votre FSI.",
+        "message": "Les sites Web de votre pays d’origine ne sont généralement pas bloqués et l’activation de cette option vous donnera un accès plus rapide vers ces sites, pouvant parfois aussi réduire les coûts d’utilisation de données de votre FSI.",
         "description": "Help text in the 'Split Tunnel' settings section explaining to the user why they might want to modify (enable) the setting."
     },
     "nav#settings": {
@@ -84,7 +84,7 @@
         "description": "Title of the message box showing the error message when a problem is detected with the user's 'upstream proxy settings'."
     },
     "settings#egress-region#default": {
-        "message": "Le choix de l'option du <strong>« Pays le plus rapide »</strong> permet à Psiphon de choisir automatiquement un serveur, ce qui donnera habituellement la meilleure connexion réseau.",
+        "message": "Le choix de l’option du <strong>« Pays le plus rapide »</strong> permet à Psiphon de choisir automatiquement un serveur, ce qui donnera habituellement la meilleure connexion réseau.",
         "description": "Help text below the 'Psiphon Server Region' combo box. It explains to the user what the default (and best) option is."
     },
     "connection#stopping-msg": {
@@ -112,11 +112,11 @@
         "description": "Appears in the notification area balloon when Psiphon is disconnected (or has lost its connection, or has been disconnected)"
     },
     "settings#split-tunnel#help-text": {
-        "message": "Si cette option est activée, les requêtes faites au serveurs dans votre pays d'origine ne seront pas tunnellisées par Psiphon.",
+        "message": "Si cette option est activée, les requêtes faites au serveurs dans votre pays d’origine ne seront pas tunnellisées par Psiphon.",
         "description": "Text explaining to the user what the 'Split Tunnel' setting does if enabled."
     },
     "about#visit-download-site": {
-        "message": "Veuillez visiter le site Web pour <strong><a class=\"NewVersionURL\" href=\"#\">télécharger une nouvelle version</a></strong> ou pour <strong><a class=\"InfoURL\" href=\"#\">obtenir de l'aide et des informations</a></strong>. Psiphon est proposé pour Android et Windows.",
+        "message": "Veuillez visiter le site Web pour <strong><a class=\"NewVersionURL\" href=\"#\">télécharger une nouvelle version</a></strong> ou pour <strong><a class=\"InfoURL\" href=\"#\">obtenir de l’aide et des informations</a></strong>. Psiphon est proposé pour Android et Windows.",
         "description": "Paragraph on the 'About' page telling users what web page to go to get a new version of Psiphon or more info about it."
     },
     "settings#upstream-proxy#skip-label": {
@@ -132,7 +132,7 @@
         "description": "One of the choices in the 'Psiphon Server Region' combo box. If selected, a Psiphon server in the Canada will be used."
     },
     "settings#systray-minimize#help-text": {
-        "message": "Si cette option est activée, la fenêtre d'application de Psiphon minimisée sera cachée dans la zone de notification (située près de l'horloge dans la barre des tâches de Windows).",
+        "message": "Si cette option est activée, la fenêtre d’application de Psiphon minimisée sera cachée dans la zone de notification (située près de l’horloge dans la barre des tâches de Windows).",
         "description": "Text explaining to the user what the 'Minimize to Notification Area (System Tray)' setting does if enabled."
     },
     "settings#upstream-proxy#port-label": {
@@ -184,7 +184,7 @@
         "description": "Text telling the user that downloading a new version of Psiphon may be beneficial, and how to get a new version."
     },
     "notice#systemproxysettings-setproxy-error-body": {
-        "message": "<p>Psiphon n'a pas réussi à paramétrer le mandataire système.</p>\n<p>Cela pourrait être dû à un conflit avec votre antivirus. Il vous faudra peut-être configurer manuellement votre application ou votre mandataire système afin qu'ils utilisent les mandataires locaux de Psiphon.</p>",
+        "message": "<p>Psiphon n’a pas réussi à paramétrer le mandataire système.</p>\n<p>Cela pourrait être dû à un conflit avec votre antivirus. Il vous faudra peut-être configurer manuellement votre application ou votre mandataire système afin qu’ils utilisent les mandataires locaux de Psiphon.</p>",
         "description": "Body text of modal error message shown to user when Psiphon fails to set the user's system proxy settings. This means that Psiphon was able to connect, but was unable to configure the system to actually use Psiphon."
     },
     "settings#egress-region#select-hu": {
@@ -192,7 +192,7 @@
         "description": "One of the choices in the 'Psiphon Server Region' combo box. If selected, a Psiphon server in Hungary will be used."
     },
     "settings#local-proxy-ports#error-modal-body-socks": {
-        "message": "<p>\nVous avez configuré Psiphon pour qu'il utilise un port local spécifique pour son serveur mandataire SOCKS.<br>\nCependant, il semble que ce port est déjà utilisé et donc, Psiphon ne peut pas s'en servir.\n</p>\n<p>\nVeuillez changer la valeur de port de mandataire SOCKS configurée et ressayer. Nous vous recommandons de supprimer la valeur afin que Psiphon puisse choisir automatiquement un port disponible.\n</p>",
+        "message": "<p>\nVous avez configuré Psiphon pour qu’il utilise un port local spécifique pour son serveur mandataire SOCKS.<br>\nCependant, il semble que ce port est déjà utilisé et donc, Psiphon ne peut pas s’en servir.\n</p>\n<p>\nVeuillez changer la valeur de port de mandataire SOCKS configurée et ressayer. Nous vous recommandons de supprimer la valeur afin que Psiphon puisse choisir automatiquement un port disponible.\n</p>",
         "description": "Main text in the 'Local Proxy Port Conflict' dialog box. This is shown when the conflict is with the SOCKS proxy port, rather than the HTTP proxy port."
     },
     "feedback#submit_button": {
@@ -200,7 +200,7 @@
         "description": "Submit button text. If the user clicks it, their feedback will be sent to Psiphon Inc."
     },
     "settings#systray-minimize#reason": {
-        "message": "La minimisation de Psiphon vers la zone de notification libère de l'espace sur la barre des tâches, ce qui est particulièrement pratique si vous exécutez souvent Psiphon durant de longues périodes.",
+        "message": "La minimisation de Psiphon vers la zone de notification libère de l’espace sur la barre des tâches, ce qui est particulièrement pratique si vous exécutez souvent Psiphon durant de longues périodes.",
         "description": "Help text in the 'Minimize to Systray' settings section explaining to the user why they might want to enable it."
     },
     "settings#unapplied-changes-prompt#discard-button": {
@@ -232,7 +232,7 @@
         "description": "Pop-up message shown to users after they have changed their settings (but they aren't currently connected, so there's no reconnect or further action)."
     },
     "about#get-by-email": {
-        "message": "<strong>Si le site Web n'est pas accessible</strong>, vous pouvez obtenir une nouvelle version de Psiphon en envoyant un courriel à :",
+        "message": "<strong>Si le site Web n’est pas accessible</strong>, vous pouvez obtenir une nouvelle version de Psiphon en envoyant un courriel à :",
         "description": "Paragraph on the 'About' page telling users that they can also get a new version of Psiphon via email. The text in this resource is then followed by an email address."
     },
     "settings#egress-region#select-nl": {
@@ -268,7 +268,7 @@
         "description": "Settings section heading. In this section the user can specify network information to use an 'upstream proxy', which is a separate proxy that Psiphon will connect through to get to its own server. This is most often used by people in school or work networks that force them to connect out to the Internet through a particular server. This setting can also disable automatic upstream proxy use."
     },
     "settings#egress-region#description": {
-        "message": "Psiphon détient des serveurs dans de nombreux pays différents. L'utilisation d'un serveur Psiphon dans un pays proche de votre pays d'origine fournira habituellement une meilleure connexion réseau, mais vous pourriez souhaiter accéder à des sites Web et des services en prétendant être virtuellement dans un pays particulier.",
+        "message": "Psiphon détient des serveurs dans de nombreux pays différents. L’utilisation d’un serveur Psiphon dans un pays proche de votre pays d’origine fournira habituellement une meilleure connexion réseau, mais vous pourriez souhaiter accéder à des sites Web et des services en prétendant être virtuellement dans un pays particulier.",
         "description": "Help text in the 'Psiphon Server Region' settings section explaining what the option is and why the user may want to override the default ('best') setting value."
     },
     "settings#vpn-incompatible-msg": {
@@ -276,7 +276,7 @@
         "description": "If 'L2TP/IPSec mode' is enabled, this text is displayed under or beside settings which are incompatible with L2TP/IPSec mode and have been disabled because of it. It is intended to let the user know why the setting has been disabled."
     },
     "general#notice-modal-tech-preamble": {
-        "message": "Voici les infos techniques de l'erreur :",
+        "message": "Voici les infos techniques de l’erreur :",
         "description": "Preamble before the technical message relating to the error being shown. This is generated within the code and may not be very user-friendly (but it may be necessary for the user to figure out what's wrong)."
     },
     "settings#local-proxy-ports#unique-error-msg": {
@@ -300,7 +300,7 @@
         "description": "This modal dialog box is shown when the user tries to save their settings, but there is an error in the values they have entered. This body is the title of the modal box."
     },
     "settings#disable-timeouts#help-text": {
-        "message": "Si cette option est activée, la communication avec le serveur Psiphon n'arrivera jamais au bout de son délai.",
+        "message": "Si cette option est activée, la communication avec le serveur Psiphon n’arrivera jamais au bout de son délai.",
         "description": "Text explaining to the user what the 'Disable Timeouts' setting does if enabled."
     },
     "nav#connection#stopped": {
@@ -320,7 +320,7 @@
         "description": "One of the choices in the 'Psiphon Server Region' combo box. If selected, a Psiphon server in Hong Kong will be used."
     },
     "notice#systemproxysettings-setproxy-warning-template": {
-        "message": "Psiphon n'a pas réussi à paramétrer le mandataire système pour la connexion Internet «%- data %> ». Cela pourrait être dû à un conflit avec votre antivirus. Il vous faudra peut-être configurer manuellement votre application ou votre mandataire système afin qu'ils utilisent les mandataires locaux de Psiphon.</p>",
+        "message": "Psiphon n’a pas réussi à paramétrer le mandataire système pour la connexion Internet «%- data %> ». Cela pourrait être dû à un conflit avec votre antivirus. Il vous faudra peut-être configurer manuellement votre application ou votre mandataire système afin qu’ils utilisent les mandataires locaux de Psiphon.</p>",
         "description": "'<%- data %>' is a placeholder and must not be modified. Log message emitted when Psiphon can't fully configure the system to use Psiphon. It may or may not be a fatal state, and may or may not need human intervention."
     },
     "connection#stop-btn": {
@@ -328,11 +328,11 @@
         "description": "Text on the big connection button telling the user that if they click it, they will stop trying to connect to the network. This is shown to the user when they are trying to connect."
     },
     "settings#egress-region#error-modal-body-http": {
-        "message": "Vous avez configuré Psiphon pour qu'il utilise un serveur dans une région particulière.<br>\nToutefois, cette région n'est plus proposée.<br>\nVous devez choisir une nouvelle région ou changer pour le choix par défaut « Pays le plus rapide ».",
+        "message": "Vous avez configuré Psiphon pour qu’il utilise un serveur dans une région particulière.<br>\nToutefois, cette région n’est plus proposée.<br>\nVous devez choisir une nouvelle région ou changer pour le choix par défaut « Pays le plus rapide ».",
         "description": "Descriptive body text of the error modal dialog shown when it is detected that the user has an invalid 'Psiphon Server Region' currently configured."
     },
     "feedback#text_feedback_bottom_para": {
-        "message": "Si le formulaire ci-dessus ne fonctionne pas, ou si vous voulez envoyer des captures d'écran, veuillez nous envoyer un courriel à <a id=\"FeedbackEmailAddress\" href=\"mailto:feedback@psiphon.ca\">feedback@psiphon.ca</a>.",
+        "message": "Si le formulaire ci-dessus ne fonctionne pas, ou si vous voulez envoyer des captures d’écran, veuillez nous envoyer un courriel à <a id=\"FeedbackEmailAddress\" href=\"mailto:feedback@psiphon.ca\">feedback@psiphon.ca</a>.",
         "description": "Message showing the user an email they can use to contact Psiphon Inc."
     },
     "settings#upstream-proxy#reason": {
@@ -396,7 +396,7 @@
         "description": "Settings section heading. In this section the user can choose to use an alternative connection and data transfer method -- also known as 'transport'."
     },
     "about#description": {
-        "message": "Psiphon est un <strong>outil de contournement de la censure</strong> — il est conçu pour donner l'accès à l'Internet ouvert, au-delà des censeurs et des pare-feu. Il est à <strong>code source ouvert</strong> et développé à Toronto, Canada.",
+        "message": "Psiphon est un <strong>outil de contournement de la censure</strong> — il est conçu pour donner l’accès à l’Internet ouvert, au-delà des censeurs et des pare-feu. Il est à <strong>code source ouvert</strong> et développé à Toronto, Canada.",
         "description": "Paragraph on the 'About' page telling users generally what Psiphon is."
     },
     "nav#connection#stopping": {
@@ -436,7 +436,7 @@
         "description": "Appears in the notification area balloon periodically while Psiphon is connected to a server. This is intended to encourage the user to visit the sponsor's landing page. Note for right-to-left languages: You should not use an exclamation mark, as it won't be displayed correct if shown on a left-to-right operating system."
     },
     "settings#upstream-proxy#set-username-password-error-msg": {
-        "message": "Vous devez définir à la fois un nom d'utilisateur et un mot de passe, ou laisser les deux vides s'il n'y a pas d'authentification.",
+        "message": "Vous devez définir à la fois un nom d’utilisateur et un mot de passe, ou laisser les deux vides s’il n’y a pas d’authentification.",
         "description": "Error message that is shown if the user enters a value for one of 'Username' or 'Password', but not for both -- this is not valid, as both are required. Alternatively, the user can leave both blank to use an upstream proxy which doesn't require authentication."
     },
     "settings#egress-region#select-be": {
@@ -464,11 +464,11 @@
         "description": "The application/product/tool name part of the fancy title at the top of the 'About' page. 'Psiphon' can be translated or transliterated if appropriate for your language. 'Beyond Borders' is the slogan that is also used on the Psiphon website -- it is meant to suggest that Psiphon can help users to get to the internet beyond the border (firewall) of the country they live in. If appropriate for your language, it should be in all capital letters."
     },
     "settings#upstream-proxy#hostname-label": {
-        "message": "Nom d'hôte",
+        "message": "Nom d’hôte",
         "description": "Label for the text box where the user can set the hostname for the 'upstream proxy'. 'Hostname' means approximately the same thing as 'server network name or identifier'."
     },
     "feedback#smiley_sad": {
-        "message": "Psiphon n'arrive souvent pas à se connecter et ne fonctionne pas assez bien.",
+        "message": "Psiphon n’arrive souvent pas à se connecter et ne fonctionne pas assez bien.",
         "description": "The text below the 'sad face' feedback choice."
     },
     "settings#unapplied-changes-prompt#body": {
@@ -492,7 +492,7 @@
         "description": "One of the choices in the 'Psiphon Server Region' combo box. If selected, a Psiphon server in Czech Republic will be used."
     },
     "settings#upstream-proxy#set-hostname-port-without-authentication-error-msg": {
-        "message": "En définissant un nom d'utilisateur et un mot de passe, il est aussi exigé de définir un nom d'hôte et un port",
+        "message": "En définissant un nom d’utilisateur et un mot de passe, il est aussi exigé de définir un nom d’hôte et un port",
         "description": "Error message that is shown if the user enters a value for 'Username' and 'Password' but doesn't set a 'Hostname' and 'Port' -- this is not valid, as both are required. Alternatively, the user can leave all fields blank to allow the automatic behaviour."
     },
     "settings#disable-timeouts#heading": {
@@ -500,7 +500,7 @@
         "description": "Settings section heading. If the user clicks this, the 'Disable Timeouts for Slow Networks' section will expand and can be edited. If 'disable timeouts' is enabled, network timeouts between the Psiphon client and server will be disabled."
     },
     "settings#upstream-proxy#by-default": {
-        "message": "Si un mandataire est déjà configuré sur votre ordinateur, par défaut Psiphon utilisera ce mandataire lors de la mise en place d'un tunnel. Vous pouvez passer outre ce comportement en spécifiant un mandataire à utiliser, ou en spécifiant qu'aucun « mandataire ascendant » ne devrait être utilisé.",
+        "message": "Si un mandataire est déjà configuré sur votre ordinateur, par défaut Psiphon utilisera ce mandataire lors de la mise en place d’un tunnel. Vous pouvez passer outre ce comportement en spécifiant un mandataire à utiliser, ou en spécifiant qu’aucun « mandataire ascendant » ne devrait être utilisé.",
         "description": "Help text indicating the default (and best) configuration and behavior for the 'Upstream Proxy' setting. It also indicates what will happen if the setting is overridden or disabled."
     },
     "settings#split-tunnel#enable-label": {
@@ -532,7 +532,7 @@
         "description": "The application/product/tool tagline/slogan/motto part of the fancy title at the top of the 'About' page. 'Beyond Borders' is the slogan that is also used on the Psiphon website -- it is meant to suggest that Psiphon can help users to get to the internet beyond the border (firewall) of the country they live in."
     },
     "settings#upstream-proxy#username-label": {
-        "message": "Nom d'utilisateur",
+        "message": "Nom d’utilisateur",
         "description": "Label for the text box where the user can set the username for the 'upstream proxy'."
     },
     "connection#wait-btn": {
@@ -540,11 +540,11 @@
         "description": "Text on the big connection button telling the user to wait while Psiphon tries to disconnect from the network. When this message is shown, the button is disabled."
     },
     "settings#upstream-proxy#set-hostname-port-error-msg": {
-        "message": "Vous devez définir à la fois le nom d'hôte et le port, ou laisser les deux vides pour une sélection automatique.",
+        "message": "Vous devez définir à la fois le nom d’hôte et le port, ou laisser les deux vides pour une sélection automatique.",
         "description": "Error message that is shown if the user enters a value for one of 'Upstream Hostname' or 'Upstream Port', but not for both -- this is not valid, as both are required. Alternatively, the user can leave both blank to allow the automatic behaviour."
     },
     "settings#transport-mode#help-text": {
-        "message": "Utilise le réseautage virtuel L2TP/IPSec de Windows. Ce mode tunnellisera toutes vos applis, mais ne fournit pas de brouillage, ni de réelle capacité de contournement de la censure. Il <strong>n'est pas recommandé</strong> pour passer outre la plupart des pare-feu.",
+        "message": "Utilise le réseautage virtuel L2TP/IPSec de Windows. Ce mode tunnellisera toutes vos applis, mais ne fournit pas de brouillage, ni de réelle capacité de contournement de la censure. Il <strong>n’est pas recommandé</strong> pour passer outre la plupart des pare-feu.",
         "description": "Help text for the 'Use L2TP/IPSec mode' transport selection checkbox. It gives some technical details and indicates that this mode is not recommended."
     },
     "settings#egress-region#select-best-performance": {
