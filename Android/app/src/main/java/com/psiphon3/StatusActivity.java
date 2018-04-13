@@ -54,6 +54,7 @@ import com.psiphon3.psiphonlibrary.WebViewProxySettings;
 
 import net.grandcentrix.tray.AppPreferences;
 import net.grandcentrix.tray.core.ItemNotFoundException;
+import net.pubnative.lite.sdk.PNLite;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -527,7 +528,7 @@ public class StatusActivity
     private boolean getShowAds() {
         return m_multiProcessPreferences.getBoolean(getString(R.string.persistent_show_ads_setting), false) &&
                 !EmbeddedValues.hasEverBeenSideLoaded(this) &&
-                Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN;
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN;
     }
 
     private boolean shouldShowUntunneledAds()
@@ -537,6 +538,8 @@ public class StatusActivity
 
     private void initUntunneledAds() {
         if (shouldShowUntunneledAds()) {
+            PNLite.initialize("f9703b12a93b4283acc59be8d10ed144", getApplication());
+
             initUntunneledBanners();
 
             if (m_moPubUntunneledInterstitial == null)
@@ -684,6 +687,8 @@ public class StatusActivity
         {
             // make sure WebView proxy settings are up to date
             WebViewProxySettings.setLocalProxy(this, getListeningLocalHttpProxyPort());
+
+            PNLite.initialize("f9703b12a93b4283acc59be8d10ed144", getApplication());
 
             initTunneledBanners();
             if (initFullScreenAd) {
