@@ -191,12 +191,10 @@ public class StatusActivity
             // unexpected disconnect in browser-only mode any more.
             // Show the home page, unless this was an automatic reconnect,
             // since the homepage should already be showing.
-            if (!intent.getBooleanExtra(TunnelManager.DATA_HANDSHAKE_IS_RECONNECT, false))
-            {
-                m_tabHost.setCurrentTabByTag("home");
-                loadSponsorTab(true);
-                m_loadedSponsorTab = true;
-            }
+
+            m_tabHost.setCurrentTabByTag("home");
+            loadSponsorTab(true);
+            m_loadedSponsorTab = true;
 
             // We only want to respond to the HANDSHAKE_SUCCESS action once,
             // so we need to clear it (by setting it to a non-special intent).
