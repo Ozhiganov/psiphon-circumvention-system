@@ -38,7 +38,6 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 
 import com.psiphon3.R;
 import com.psiphon3.psiphonlibrary.Utils.MyLog;
@@ -84,9 +83,10 @@ public class TunnelManager implements PsiphonTunnel.HostService, MyLog.ILogger {
     public static final int MSG_STOP_SERVICE = 2;
 
     // Service -> Client
-    public static final int MSG_KNOWN_SERVER_REGIONS = 4;
-    public static final int MSG_TUNNEL_STATE = 7;
-    public static final int MSG_DATA_TRANSFER_STATS = 8;
+    public static final int MSG_KNOWN_SERVER_REGIONS = 0;
+    public static final int MSG_TUNNEL_STATE = 1;
+    public static final int MSG_DATA_TRANSFER_STATS = 2;
+
 
     public static final String INTENT_ACTION_HANDSHAKE = "com.psiphon3.psiphonlibrary.TunnelManager.HANDSHAKE";
 
@@ -149,7 +149,7 @@ public class TunnelManager implements PsiphonTunnel.HostService, MyLog.ILogger {
 
 
     private ReplaySubject<Boolean> m_tunnelConnectedSubject;
-    private Disposable m_clientUpdatesSubscription = null;
+    private Disposable m_clientTunnelStateSubscription = null;
 
 
     public TunnelManager(Service parentService) {
@@ -344,7 +344,7 @@ public class TunnelManager implements PsiphonTunnel.HostService, MyLog.ILogger {
         getConnectionObservable()
                 .takeUntil(isConnected -> isConnected == Boolean.TRUE)
                 .doOnComplete(() -> {
-                    sendHomepageIntent();
+                    sendOpenHomepageIntent();
                 })
                 .subscribe();
     }
@@ -361,19 +361,22 @@ public class TunnelManager implements PsiphonTunnel.HostService, MyLog.ILogger {
                 .subscribe();
     }
 
-    // A new subscription that gets created every time the app binds to the service
-    private void doNotifyClientStateWork() {
-        m_clientUpdatesSubscription = getConnectionObservable()
+    private void startNotifyClientWork() {
+        // The  subscription get recreated every time the app binds to the service.
+        // Sends connection state updates to the client as long as it is not disposed.
+        m_clientTunnelStateSubscription = getConnectionObservable()
                 .doOnNext(isConnected -> {
-                    Bundle data = getTunnelStateBundle(isConnected);
+                    m_tunnelState.isConnected = isConnected;
+                    Bundle data = getTunnelStateBundle();
                     sendClientMessage(MSG_TUNNEL_STATE, data);
                 })
                 .subscribe();
     }
-    private void stopNotifyClientStateWork() {
-        if(m_clientUpdatesSubscription != null) {
-            m_clientUpdatesSubscription.dispose();
-            m_clientUpdatesSubscription = null;
+
+    private void stopNotifyClientWork() {
+        if(m_clientTunnelStateSubscription != null) {
+            m_clientTunnelStateSubscription.dispose();
+            m_clientTunnelStateSubscription = null;
         }
     }
 
@@ -401,14 +404,14 @@ public class TunnelManager implements PsiphonTunnel.HostService, MyLog.ILogger {
                 case TunnelManager.MSG_REGISTER:
                     if (manager != null) {
                         manager.m_outgoingMessenger = msg.replyTo;
-                        manager.stopNotifyClientStateWork();
-                        manager.doNotifyClientStateWork();
+                        manager.stopNotifyClientWork();
+                        manager.startNotifyClientWork();
                     }
                     break;
 
                 case TunnelManager.MSG_UNREGISTER:
                     if (manager != null) {
-                        manager.stopNotifyClientStateWork();
+                        manager.stopNotifyClientWork();
                         manager.m_outgoingMessenger = null;
                     }
                     break;
@@ -440,21 +443,21 @@ public class TunnelManager implements PsiphonTunnel.HostService, MyLog.ILogger {
         }
     }
 
-    private void sendHomepageIntent() {
+    private void sendOpenHomepageIntent() {
             Intent intent = new Intent();
-            intent.putExtra(DATA_TUNNEL_STATE_HOME_PAGES, m_tunnelState.homePages);
+            intent.putExtras(getTunnelStateBundle());
 
             try {
                 m_tunnelConfig.handshakePendingIntent.send(
                         m_parentService, 0, intent);
             } catch (PendingIntent.CanceledException e) {
-                MyLog.g("sendHandshakeIntent failed: %s", e.getMessage());
+                MyLog.g("sendOpenHomepageIntent failed: %s", e.getMessage());
             }
     }
 
-    private Bundle getTunnelStateBundle(boolean isConnected) {
+    private Bundle getTunnelStateBundle() {
         Bundle data = new Bundle();
-        data.putBoolean(DATA_TUNNEL_STATE_IS_CONNECTED, isConnected);
+        data.putBoolean(DATA_TUNNEL_STATE_IS_CONNECTED, m_tunnelState.isConnected);
         data.putStringArrayList(DATA_TUNNEL_STATE_AVAILABLE_EGRESS_REGIONS, m_tunnelState.availableEgressRegions);
         data.putInt(DATA_TUNNEL_STATE_LISTENING_LOCAL_SOCKS_PROXY_PORT, m_tunnelState.listeningLocalSocksProxyPort);
         data.putInt(DATA_TUNNEL_STATE_LISTENING_LOCAL_HTTP_PROXY_PORT, m_tunnelState.listeningLocalHttpProxyPort);
