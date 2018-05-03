@@ -162,49 +162,26 @@ public abstract class MainBase {
         private Toast m_invalidProxySettingsToast;
         private Button m_moreOptionsButton;
         private LoggingObserver m_loggingObserver;
+        private boolean m_sponsorHomePageLoaded = false;
 
         public TabbedActivityBase() {
             Utils.initializeSecureRandom();
         }
 
-        // Avoid calling m_statusTabToggleButton.setImageResource() every 250 ms
-        // when it is set to the connected image
         private ImageButton m_statusViewImage;
-        private boolean m_statusIconSetToConnected = false;
 
         private void setStatusState(int resId) {
-            boolean statusShowing = m_sponsorViewFlipper.getCurrentView() == m_statusLayout;
+            m_statusViewImage.setImageResource(resId);
 
-            if (R.drawable.status_icon_connected == resId) {
-                if (!m_statusIconSetToConnected) {
-                    m_statusViewImage.setImageResource(resId);
-                    m_statusIconSetToConnected = true;
-                }
-
-                // Show the sponsor web view, but only if there's a home page to
-                // show and it's isn't excluded from being embedded.
-                boolean showHomePage = false;
-                List<String> homepages = getHomePages();
-                if (homepages.size() > 0) {
-                    showHomePage = true;
-                    for (String homeTabUrlExclusion : EmbeddedValues.HOME_TAB_URL_EXCLUSIONS) {
-                        if (homepages.get(0).contains(homeTabUrlExclusion)) {
-                            showHomePage = false;
-                            break;
-                        }
+            if (m_sponsorHomePageLoaded) {
+                if(resId == R.drawable.status_icon_connected) {
+                    if(m_sponsorViewFlipper.getCurrentView() == m_statusLayout) {
+                        m_sponsorViewFlipper.showNext();
                     }
-                }
-
-                if (showHomePage && statusShowing) {
-                    m_sponsorViewFlipper.showNext();
-                }
-            } else {
-                m_statusViewImage.setImageResource(resId);
-                m_statusIconSetToConnected = false;
-
-                // Show the status view
-                if (!statusShowing) {
-                    m_sponsorViewFlipper.showNext();
+                } else {
+                    if (m_sponsorViewFlipper.getCurrentView() != m_statusLayout) {
+                        m_sponsorViewFlipper.showNext();
+                    }
                 }
             }
         }
@@ -477,6 +454,7 @@ public abstract class MainBase {
 
             updateServiceStateUI();
 
+
             if (m_firstRun)
             {
                 RegionAdapter.initialize(this);
@@ -578,8 +556,13 @@ public abstract class MainBase {
             }
 
             // At this point we're showing the URL in the embedded webview.
+            if ( m_sponsorViewFlipper.getCurrentView() == m_statusLayout) {
+                m_sponsorViewFlipper.showNext();
+            }
+
             m_sponsorHomePage = new SponsorHomePage((WebView) findViewById(R.id.sponsorWebView), (ProgressBar) findViewById(R.id.sponsorWebViewProgressBar));
             m_sponsorHomePage.load(url);
+            m_sponsorHomePageLoaded = true;
         }
 
         @Override
@@ -620,6 +603,8 @@ public abstract class MainBase {
             else {
                 // reset the tunnel state
                 m_tunnelState = new TunnelManager.State();
+                updateServiceStateUI();
+
             }
         }
 
@@ -1203,7 +1188,7 @@ public abstract class MainBase {
             return m_tunnelState.listeningLocalHttpProxyPort;
         }
 
-        protected void getTunnelStateFromHandshakeIntent(Intent intent) {
+        protected void getTunnelStateFromOpenHomepageIntent(Intent intent) {
             if (!intent.getAction().equals(TunnelManager.INTENT_ACTION_HANDSHAKE)) {
                 return;
             }
@@ -1224,6 +1209,7 @@ public abstract class MainBase {
             m_tunnelState.listeningLocalSocksProxyPort = data.getInt(TunnelManager.DATA_TUNNEL_STATE_LISTENING_LOCAL_SOCKS_PROXY_PORT);
             m_tunnelState.listeningLocalHttpProxyPort = data.getInt(TunnelManager.DATA_TUNNEL_STATE_LISTENING_LOCAL_HTTP_PROXY_PORT);
             m_tunnelState.clientRegion = data.getString(TunnelManager.DATA_TUNNEL_STATE_CLIENT_REGION);
+
             ArrayList<String> homePages = data.getStringArrayList(TunnelManager.DATA_TUNNEL_STATE_HOME_PAGES);
             if (homePages != null) {
                 m_tunnelState.homePages = homePages;
@@ -1257,12 +1243,14 @@ public abstract class MainBase {
                 Bundle data = msg.getData();
                 switch (msg.what) {
                     case TunnelManager.MSG_TUNNEL_STATE:
-                        // An activity created while the service is already running will learn
-                        // the sponsor home page at this point, so now load it.
-                        // TODO: Eugene: fix restoring sponsor Tab
-                        // restoreSponsorTab();
                         getTunnelStateFromBundle(data);
                         updateServiceStateUI();
+
+                        // An activity created while the service is already running will learn
+                        // the sponsor home page at this point, so now load it.
+                        if(isTunnelConnected()) {
+                            restoreSponsorTab();
+                        }
                         break;
 
                     case TunnelManager.MSG_KNOWN_SERVER_REGIONS:
@@ -1345,6 +1333,7 @@ public abstract class MainBase {
                     // "java.lang.IllegalArgumentException: Service not registered"
                 }
             }
+
             updateServiceStateUI();
         }
 

@@ -104,22 +104,17 @@ public class StatusActivity
 
         m_loadedSponsorTab = false;
         HandleCurrentIntent();
-
-        restoreSponsorTab();
     }
 
     @Override
     protected void restoreSponsorTab() {
-        // HandleCurrentIntent() may have already loaded the sponsor tab
-        if (isTunnelConnected() && !m_loadedSponsorTab)
-        {
-            loadSponsorTab(false);
-        }
-    }
 
-    private void loadSponsorTab(boolean freshConnect)
-    {
-        resetSponsorHomePage(freshConnect);
+        // HandleCurrentIntent() may have already loaded the sponsor tab
+        if (!m_loadedSponsorTab)
+        {
+            resetSponsorHomePage(false);
+            m_loadedSponsorTab = true;
+        }
     }
 
     @Override
@@ -178,7 +173,7 @@ public class StatusActivity
 
         if (0 == intent.getAction().compareTo(TunnelManager.INTENT_ACTION_HANDSHAKE))
         {
-            getTunnelStateFromHandshakeIntent(intent);
+            getTunnelStateFromOpenHomepageIntent(intent);
 
             // OLD COMMENT:
             // Show the home page. Always do this in browser-only mode, even
@@ -193,7 +188,7 @@ public class StatusActivity
             // since the homepage should already be showing.
 
             m_tabHost.setCurrentTabByTag("home");
-            loadSponsorTab(true);
+            resetSponsorHomePage(true);
             m_loadedSponsorTab = true;
 
             // We only want to respond to the HANDSHAKE_SUCCESS action once,
