@@ -123,16 +123,16 @@ public class StatusActivity
 
         m_loadedSponsorTab = false;
         HandleCurrentIntent();
-
-        restoreSponsorTab();
     }
 
     @Override
     protected void restoreSponsorTab() {
+
         // HandleCurrentIntent() may have already loaded the sponsor tab
-        if (isTunnelConnected() && !m_loadedSponsorTab)
+        if (!m_loadedSponsorTab)
         {
-            loadSponsorTab(false);
+            resetSponsorHomePage(false);
+            m_loadedSponsorTab = true;
         }
     }
 
@@ -249,7 +249,7 @@ public class StatusActivity
 
         if (0 == intent.getAction().compareTo(TunnelManager.INTENT_ACTION_HANDSHAKE))
         {
-            getTunnelStateFromHandshakeIntent(intent);
+            getTunnelStateFromOpenHomepageIntent(intent);
 
             // OLD COMMENT:
             // Show the home page. Always do this in browser-only mode, even
@@ -262,17 +262,10 @@ public class StatusActivity
             // unexpected disconnect in browser-only mode any more.
             // Show the home page, unless this was an automatic reconnect,
             // since the homepage should already be showing.
-            if (!intent.getBooleanExtra(TunnelManager.DATA_HANDSHAKE_IS_RECONNECT, false))
-            {
-                // Don't let this tab change trigger an interstitial ad
-                // OnResume() will reset this flag
-                m_temporarilyDisableTunneledInterstitial = true;
-                m_tunneledFullScreenAdCounter = 0;
 
-                m_tabHost.setCurrentTabByTag("home");
-                loadSponsorTab(true);
-                m_loadedSponsorTab = true;
-            }
+            m_tabHost.setCurrentTabByTag("home");
+            resetSponsorHomePage(true);
+            m_loadedSponsorTab = true;
 
             // We only want to respond to the HANDSHAKE_SUCCESS action once,
             // so we need to clear it (by setting it to a non-special intent).
