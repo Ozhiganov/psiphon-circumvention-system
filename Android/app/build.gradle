@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.3"
+    buildToolsVersion '27.0.3'
     useLibrary 'org.apache.http.legacy'
 
     repositories{
@@ -81,6 +81,10 @@ android {
         throw new GradleException('signing.properties not found!')
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 repositories {
@@ -96,6 +100,8 @@ dependencies {
     implementation files('libs/snakeyaml-1.10-android.jar')
     implementation(name:'ca.psiphon', ext:'aar')
     implementation 'com.google.android.gms:play-services-safetynet:11.8.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.12'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     implementation project(':tray')
     implementation('com.mopub:mopub-sdk-banner:4.20.0@aar') {
         transitive = true
