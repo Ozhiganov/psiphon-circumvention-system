@@ -1164,7 +1164,6 @@ public abstract class MainBase {
             startService(intent);
             if (bindService(intent, m_tunnelServiceConnection, 0)) {
                 m_boundToTunnelService = true;
-                sendServiceMessage(TunnelManager.MSG_REGISTER);
             }
         }
 

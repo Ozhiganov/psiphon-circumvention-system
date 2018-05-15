@@ -211,7 +211,7 @@ public class TunnelManager implements PsiphonTunnel.HostService, MyLog.ILogger {
 
         if(intent != null) {
             m_outgoingMessenger = (Messenger) intent.getParcelableExtra(CLIENT_MESSENGER);
-            sendClientMessage(MSG_REGISTER_RESPONSE, getTunnelStateBundle());
+            startNotifyClientWork();
         }
 
         return Service.START_REDELIVER_INTENT;
