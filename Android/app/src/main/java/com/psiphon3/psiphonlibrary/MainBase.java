@@ -44,6 +44,7 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.KeyEvent;
@@ -94,7 +95,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public abstract class MainBase {
-    public static abstract class Activity extends android.app.Activity implements MyLog.ILogger {
+    public static abstract class Activity extends AppCompatActivity implements MyLog.ILogger {
         public Activity() {
             Utils.initializeSecureRandom();
         }
@@ -145,7 +146,6 @@ public abstract class MainBase {
         private SponsorHomePage m_sponsorHomePage;
         private LocalBroadcastManager m_localBroadcastManager;
         private Timer m_updateStatisticsUITimer;
-        private Timer m_updateServiceStateUITimer;
         private boolean m_restartTunnel = false;
         private TextView m_elapsedConnectionTimeView;
         private TextView m_totalSentView;
@@ -162,49 +162,26 @@ public abstract class MainBase {
         private Toast m_invalidProxySettingsToast;
         private Button m_moreOptionsButton;
         private LoggingObserver m_loggingObserver;
+        private boolean m_sponsorHomePageLoaded = false;
 
         public TabbedActivityBase() {
             Utils.initializeSecureRandom();
         }
 
-        // Avoid calling m_statusTabToggleButton.setImageResource() every 250 ms
-        // when it is set to the connected image
         private ImageButton m_statusViewImage;
-        private boolean m_statusIconSetToConnected = false;
 
         private void setStatusState(int resId) {
-            boolean statusShowing = m_sponsorViewFlipper.getCurrentView() == m_statusLayout;
+            m_statusViewImage.setImageResource(resId);
 
-            if (R.drawable.status_icon_connected == resId) {
-                if (!m_statusIconSetToConnected) {
-                    m_statusViewImage.setImageResource(resId);
-                    m_statusIconSetToConnected = true;
-                }
-
-                // Show the sponsor web view, but only if there's a home page to
-                // show and it's isn't excluded from being embedded.
-                boolean showHomePage = false;
-                List<String> homepages = getHomePages();
-                if (homepages.size() > 0) {
-                    showHomePage = true;
-                    for (String homeTabUrlExclusion : EmbeddedValues.HOME_TAB_URL_EXCLUSIONS) {
-                        if (homepages.get(0).contains(homeTabUrlExclusion)) {
-                            showHomePage = false;
-                            break;
-                        }
+            if (m_sponsorHomePageLoaded) {
+                if(resId == R.drawable.status_icon_connected) {
+                    if(m_sponsorViewFlipper.getCurrentView() == m_statusLayout) {
+                        m_sponsorViewFlipper.showNext();
                     }
-                }
-
-                if (showHomePage && statusShowing) {
-                    m_sponsorViewFlipper.showNext();
-                }
-            } else {
-                m_statusViewImage.setImageResource(resId);
-                m_statusIconSetToConnected = false;
-
-                // Show the status view
-                if (!statusShowing) {
-                    m_sponsorViewFlipper.showNext();
+                } else {
+                    if (m_sponsorViewFlipper.getCurrentView() != m_statusLayout) {
+                        m_sponsorViewFlipper.showNext();
+                    }
                 }
             }
         }
@@ -223,9 +200,9 @@ public abstract class MainBase {
          * A gesture listener that listens for a left or right swipe and uses
          * the swip gesture to navigate a TabHost that uses an AnimatedTabHost
          * listener.
-         * 
+         *
          * @author Daniel Kvist
-         * 
+         *
          */
         class LateralGestureDetector extends SimpleOnGestureListener {
             private static final int SWIPE_MIN_DISTANCE = 120;
@@ -297,7 +274,7 @@ public abstract class MainBase {
 
         /**
          * Custom animation that animates in from right
-         * 
+         *
          * @return Animation the Animation object
          */
         private Animation inFromRightAnimation() {
@@ -308,7 +285,7 @@ public abstract class MainBase {
 
         /**
          * Custom animation that animates out to the right
-         * 
+         *
          * @return Animation the Animation object
          */
         private Animation outToRightAnimation() {
@@ -319,7 +296,7 @@ public abstract class MainBase {
 
         /**
          * Custom animation that animates in from left
-         * 
+         *
          * @return Animation the Animation object
          */
         private Animation inFromLeftAnimation() {
@@ -330,7 +307,7 @@ public abstract class MainBase {
 
         /**
          * Custom animation that animates out to the left
-         * 
+         *
          * @return Animation the Animation object
          */
         private Animation outToLeftAnimation() {
@@ -341,7 +318,7 @@ public abstract class MainBase {
 
         /**
          * Helper method that sets some common properties
-         * 
+         *
          * @param animation
          *            the animation to give common properties
          * @return the animation with common properties
@@ -477,6 +454,7 @@ public abstract class MainBase {
 
             updateServiceStateUI();
 
+
             if (m_firstRun)
             {
                 RegionAdapter.initialize(this);
@@ -552,7 +530,7 @@ public abstract class MainBase {
         /**
          * Show the sponsor home page, either in the embedded view web view or
          * in the external browser.
-         * 
+         *
          * @param freshConnect
          *            If false, the home page will not be opened in an external
          *            browser. This is to prevent the page from opening every
@@ -578,8 +556,13 @@ public abstract class MainBase {
             }
 
             // At this point we're showing the URL in the embedded webview.
+            if ( m_sponsorViewFlipper.getCurrentView() == m_statusLayout) {
+                m_sponsorViewFlipper.showNext();
+            }
+
             m_sponsorHomePage = new SponsorHomePage((WebView) findViewById(R.id.sponsorWebView), (ProgressBar) findViewById(R.id.sponsorWebViewProgressBar));
             m_sponsorHomePage.load(url);
+            m_sponsorHomePageLoaded = true;
         }
 
         @Override
@@ -610,27 +593,9 @@ public abstract class MainBase {
                 }
             }, 0, 1000);
 
-            m_updateServiceStateUITimer = new Timer();
-            m_updateServiceStateUITimer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            updateServiceStateUI();
-                            checkRestartTunnel();
-                        }
-                    });
-                }
-            }, 0, 250);
 
             // Don't show the keyboard until edit selected
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-
-            // Set to foreground before binding to the service. Otherwise there would be a short
-            // period of time where we could miss a handshake intent after getting the
-            // tunnel state from registering with the service.
-            m_multiProcessPreferences.put(getString(R.string.status_activity_foreground), true);
 
             if (isServiceRunning()) {
                 startAndBindTunnelService();
@@ -638,6 +603,8 @@ public abstract class MainBase {
             else {
                 // reset the tunnel state
                 m_tunnelState = new TunnelManager.State();
+                updateServiceStateUI();
+
             }
         }
 
@@ -650,11 +617,8 @@ public abstract class MainBase {
             cancelInvalidProxySettingsToast();
 
             m_updateStatisticsUITimer.cancel();
-            m_updateServiceStateUITimer.cancel();
 
             unbindTunnelService();
-
-            m_multiProcessPreferences.put(getString(R.string.status_activity_foreground), false);
         }
 
         protected void doToggle() {
@@ -893,26 +857,27 @@ public abstract class MainBase {
         }
 
         private void updateServiceStateUI() {
-            if (!m_boundToTunnelService) {
+            if(!isServiceRunning()) {
                 setStatusState(R.drawable.status_icon_disconnected);
-                if (!isServiceRunning()) {
-                    m_toggleButton.setText(getText(R.string.start));
-                    enableToggleServiceUI();
-                } else {
+                enableToggleServiceUI();
+                m_toggleButton.setText(getText(R.string.start));
+
+            } else {
+                if (!m_boundToTunnelService) {
                     m_toggleButton.setText(getText(R.string.waiting));
                     disableToggleServiceUI();
-                }
-            } else {
-                if (isTunnelConnected()) {
-                    setStatusState(R.drawable.status_icon_connected);
                 } else {
-                    setStatusState(R.drawable.status_icon_connecting);
+                    if (isTunnelConnected()) {
+                        setStatusState(R.drawable.status_icon_connected);
+                    } else {
+                        setStatusState(R.drawable.status_icon_connecting);
+                    }
+                    m_toggleButton.setText(getText(R.string.stop));
+                    enableToggleServiceUI();
                 }
-                m_toggleButton.setText(getText(R.string.stop));
-                enableToggleServiceUI();
             }
         }
-        
+
         protected void enableToggleServiceUI() {
             m_toggleButton.setEnabled(true);
             m_tunnelWholeDeviceToggle.setEnabled(m_canWholeDevice);
@@ -931,7 +896,6 @@ public abstract class MainBase {
 
         private void checkRestartTunnel() {
             if (m_restartTunnel &&
-                    !m_boundToTunnelService &&
                     !isServiceRunning()) {
                 m_restartTunnel = false;
                 startTunnel();
@@ -945,7 +909,7 @@ public abstract class MainBase {
                 // The tunnel will get restarted in m_updateServiceStateTimer
             }
         }
-        
+
         protected void startTunnel() {
             // Don't start if custom proxy settings is selected and values are
             // invalid
@@ -975,7 +939,7 @@ public abstract class MainBase {
         }
 
         protected boolean doVpnPrepare() {
-            
+
             // Devices without VpnService support throw various undocumented
             // exceptions, including ActivityNotFoundException and ActivityNotFoundException.
             // For example: http://code.google.com/p/ics-openvpn/source/browse/src/de/blinkt/openvpn/LaunchVPN.java?spec=svn2a81c206204193b14ac0766386980acdc65bee60&name=v0.5.23&r=2a81c206204193b14ac0766386980acdc65bee60#376
@@ -1063,7 +1027,7 @@ public abstract class MainBase {
             if (!prefs.getString(getString(R.string.useCustomProxySettingsHostPreference), "")
                     .equals(UpstreamProxySettings.getCustomProxyHost(this))
                     || !prefs.getString(getString(R.string.useCustomProxySettingsPortPreference), "")
-                            .equals(UpstreamProxySettings.getCustomProxyPort(this))) {
+                    .equals(UpstreamProxySettings.getCustomProxyPort(this))) {
                 return true;
             }
 
@@ -1200,6 +1164,7 @@ public abstract class MainBase {
             startService(intent);
             if (bindService(intent, m_tunnelServiceConnection, 0)) {
                 m_boundToTunnelService = true;
+                sendServiceMessage(TunnelManager.MSG_REGISTER);
             }
         }
 
@@ -1225,7 +1190,7 @@ public abstract class MainBase {
             return m_tunnelState.listeningLocalHttpProxyPort;
         }
 
-        protected void getTunnelStateFromHandshakeIntent(Intent intent) {
+        protected void getTunnelStateFromOpenHomepageIntent(Intent intent) {
             if (!intent.getAction().equals(TunnelManager.INTENT_ACTION_HANDSHAKE)) {
                 return;
             }
@@ -1243,14 +1208,10 @@ public abstract class MainBase {
                 RegionAdapter.setServersExist(this, availableEgressRegions);
             }
             m_tunnelState.isConnected = data.getBoolean(TunnelManager.DATA_TUNNEL_STATE_IS_CONNECTED);
-            if (m_tunnelState.isConnected) {
-                setStatusState(R.drawable.status_icon_connected);
-            } else {
-                setStatusState(R.drawable.status_icon_connecting);
-            }
             m_tunnelState.listeningLocalSocksProxyPort = data.getInt(TunnelManager.DATA_TUNNEL_STATE_LISTENING_LOCAL_SOCKS_PROXY_PORT);
             m_tunnelState.listeningLocalHttpProxyPort = data.getInt(TunnelManager.DATA_TUNNEL_STATE_LISTENING_LOCAL_HTTP_PROXY_PORT);
             m_tunnelState.clientRegion = data.getString(TunnelManager.DATA_TUNNEL_STATE_CLIENT_REGION);
+
             ArrayList<String> homePages = data.getStringArrayList(TunnelManager.DATA_TUNNEL_STATE_HOME_PAGES);
             if (homePages != null) {
                 m_tunnelState.homePages = homePages;
@@ -1283,36 +1244,21 @@ public abstract class MainBase {
             public void handleMessage(Message msg) {
                 Bundle data = msg.getData();
                 switch (msg.what) {
-                    case TunnelManager.MSG_REGISTER_RESPONSE:
+                    case TunnelManager.MSG_TUNNEL_STATE:
                         getTunnelStateFromBundle(data);
+                        updateServiceStateUI();
+
                         // An activity created while the service is already running will learn
                         // the sponsor home page at this point, so now load it.
-                        restoreSponsorTab();
-                        updateServiceStateUI();
+                        if(isTunnelConnected()) {
+                            restoreSponsorTab();
+                        }
                         break;
 
                     case TunnelManager.MSG_KNOWN_SERVER_REGIONS:
                         RegionAdapter.setServersExist(
                                 MainBase.TabbedActivityBase.this,
                                 data.getStringArrayList(TunnelManager.DATA_TUNNEL_STATE_AVAILABLE_EGRESS_REGIONS));
-                        break;
-
-                    case TunnelManager.MSG_TUNNEL_STARTING:
-                        m_tunnelState.isConnected = false;
-                        updateServiceStateUI();
-                        break;
-
-                    case TunnelManager.MSG_TUNNEL_STOPPING:
-                        m_tunnelState.isConnected = false;
-
-                        // When the tunnel self-stops, we also need to unbind to ensure
-                        // the service is destroyed
-                        unbindTunnelService();
-                        break;
-
-                    case TunnelManager.MSG_TUNNEL_CONNECTION_STATE:
-                        m_tunnelState.isConnected = data.getBoolean(TunnelManager.DATA_TUNNEL_STATE_IS_CONNECTED);
-                        updateServiceStateUI();
                         break;
 
                     case TunnelManager.MSG_DATA_TRANSFER_STATS:
@@ -1362,7 +1308,8 @@ public abstract class MainBase {
             @Override
             public void onServiceDisconnected(ComponentName arg0) {
                 m_outgoingMessenger = null;
-                unbindTunnelService();
+                updateServiceStateUI();
+                checkRestartTunnel();
             }
         };
 
@@ -1377,8 +1324,8 @@ public abstract class MainBase {
 
         private void unbindTunnelService() {
             if (m_boundToTunnelService) {
-                m_boundToTunnelService = false;
                 sendServiceMessage(TunnelManager.MSG_UNREGISTER);
+                m_boundToTunnelService = false;
                 try {
                     unbindService(m_tunnelServiceConnection);
                 }
@@ -1387,12 +1334,13 @@ public abstract class MainBase {
                     // "java.lang.IllegalArgumentException: Service not registered"
                 }
             }
+
             updateServiceStateUI();
         }
 
         /**
          * Determine if the Psiphon local service is currently running.
-         * 
+         *
          * @see <a href="http://stackoverflow.com/a/5921190/729729">From
          *      StackOverflow answer:
          *      "android: check if a service is running"</a>
@@ -1403,7 +1351,7 @@ public abstract class MainBase {
             for (RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
                 if (service.uid == android.os.Process.myUid() &&
                         (TunnelService.class.getName().equals(service.service.getClassName())
-                        || (Utils.hasVpnService() && isVpnService(service.service.getClassName())))) {
+                                || (Utils.hasVpnService() && isVpnService(service.service.getClassName())))) {
                     return true;
                 }
             }
@@ -1508,7 +1456,7 @@ public abstract class MainBase {
 
                 mWebView.setWebChromeClient(mWebChromeClient);
                 mWebView.setWebViewClient(mWebViewClient);
-                
+
                 WebSettings webSettings = mWebView.getSettings();
                 webSettings.setJavaScriptEnabled(true);
                 webSettings.setDomStorageEnabled(true);
