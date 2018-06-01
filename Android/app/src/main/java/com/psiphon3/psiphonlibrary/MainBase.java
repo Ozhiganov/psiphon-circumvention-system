@@ -155,7 +155,7 @@ public abstract class MainBase {
         private DataTransferGraph m_fastSentGraph;
         private DataTransferGraph m_fastReceivedGraph;
         private RegionAdapter m_regionAdapter;
-        private SpinnerHelper m_regionSelector;
+        protected SpinnerHelper m_regionSelector;
         protected CheckBox m_tunnelWholeDeviceToggle;
         protected CheckBox m_downloadOnWifiOnlyToggle;
         protected CheckBox m_disableTimeoutsToggle;
@@ -454,25 +454,16 @@ public abstract class MainBase {
 
             updateServiceStateUI();
 
-
-            if (m_firstRun)
-            {
-                RegionAdapter.initialize(this);
-            }
             m_regionAdapter = new RegionAdapter(this);
             m_regionSelector.setAdapter(m_regionAdapter);
             String egressRegionPreference = m_multiProcessPreferences.getString(EGRESS_REGION_PREFERENCE,
                     PsiphonConstants.REGION_CODE_ANY);
-            int position = m_regionAdapter.getPositionForRegionCode(egressRegionPreference);
-            m_regionSelector.setSelection(position);
+
+            m_regionSelector.setSelectionByValue(egressRegionPreference);
+
             setTunnelConfigEgressRegion(egressRegionPreference);
 
             m_regionSelector.setOnItemSelectedListener(regionSpinnerOnItemSelected);
-            // Re-populate the spinner when it is expanded -- the underlying
-            // region list could change
-            // due to background server discovery or remote server list fetch.
-            m_regionSelector.getSpinner().setOnTouchListener(regionSpinnerOnTouch);
-            m_regionSelector.getSpinner().setOnKeyListener(regionSpinnerOnKey);
 
             m_canWholeDevice = Utils.hasVpnService();
 
@@ -675,7 +666,8 @@ public abstract class MainBase {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                onRegionSelected(position);
+                String regionCode = parent.getItemAtPosition(position).toString();
+                onRegionSelected(regionCode);
             }
 
             @Override
@@ -683,36 +675,12 @@ public abstract class MainBase {
             }
         };
 
-        private final View.OnTouchListener regionSpinnerOnTouch = new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    m_regionAdapter.populate();
-                }
-                return false;
-            }
-        };
-
-        private final View.OnKeyListener regionSpinnerOnKey = new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
-                    m_regionAdapter.populate();
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        };
-
-        public void onRegionSelected(int position) {
+        public void onRegionSelected(String selectedRegionCode) {
             // Just in case an OnItemSelected message is in transit before
             // setEnabled is processed...(?)
             if (!m_regionSelector.isEnabled()) {
                 return;
             }
-
-            String selectedRegionCode = m_regionAdapter.getSelectedRegionCode(position);
 
             String egressRegionPreference = m_multiProcessPreferences.getString(EGRESS_REGION_PREFERENCE,
                     PsiphonConstants.REGION_CODE_ANY);
@@ -1126,12 +1094,19 @@ public abstract class MainBase {
             return null;
         }
 
+        protected PendingIntent getRegionNotAvailablePendingIntent() {
+            return null;
+        }
+
         protected void configureServiceIntent(Intent intent) {
             intent.putExtra(TunnelManager.DATA_TUNNEL_CONFIG_HANDSHAKE_PENDING_INTENT,
                     getHandshakePendingIntent());
 
             intent.putExtra(TunnelManager.DATA_TUNNEL_CONFIG_NOTIFICATION_PENDING_INTENT,
                     getServiceNotificationPendingIntent());
+
+            intent.putExtra(TunnelManager.DATA_TUNNEL_CONFIG_REGION_NOT_AVAILABLE_PENDING_INTENT,
+                    getRegionNotAvailablePendingIntent());
 
             intent.putExtra(TunnelManager.DATA_TUNNEL_CONFIG_WHOLE_DEVICE,
                     getTunnelConfigWholeDevice());
@@ -1200,12 +1175,6 @@ public abstract class MainBase {
             if (data == null) {
                 return;
             }
-
-            ArrayList<String> availableEgressRegions = data.getStringArrayList(TunnelManager.DATA_TUNNEL_STATE_AVAILABLE_EGRESS_REGIONS);
-            if (availableEgressRegions != null) {
-                m_tunnelState.availableEgressRegions = availableEgressRegions;
-                RegionAdapter.setServersExist(this, availableEgressRegions);
-            }
             m_tunnelState.isConnected = data.getBoolean(TunnelManager.DATA_TUNNEL_STATE_IS_CONNECTED);
             m_tunnelState.listeningLocalSocksProxyPort = data.getInt(TunnelManager.DATA_TUNNEL_STATE_LISTENING_LOCAL_SOCKS_PROXY_PORT);
             m_tunnelState.listeningLocalHttpProxyPort = data.getInt(TunnelManager.DATA_TUNNEL_STATE_LISTENING_LOCAL_HTTP_PROXY_PORT);
@@ -1255,9 +1224,9 @@ public abstract class MainBase {
                         break;
 
                     case TunnelManager.MSG_KNOWN_SERVER_REGIONS:
-                        RegionAdapter.setServersExist(
-                                MainBase.TabbedActivityBase.this,
-                                data.getStringArrayList(TunnelManager.DATA_TUNNEL_STATE_AVAILABLE_EGRESS_REGIONS));
+                        m_regionAdapter.updateRegionsFromPreferences();
+                        // Make sure we preserve the selection in case the dataset has changed
+                        m_regionSelector.setSelectionByValue(m_tunnelConfig.egressRegion);
                         break;
 
                     case TunnelManager.MSG_DATA_TRANSFER_STATS:
