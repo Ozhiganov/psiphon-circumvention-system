@@ -171,13 +171,6 @@ public class TunnelManager implements PsiphonTunnel.HostService, MyLog.ILogger {
             }
         }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel notificationChannel = new NotificationChannel(
-                    NOTIFICATION_CHANNEL_ID, m_parentService.getText(R.string.psiphon_service_notification_channel_name),
-                    NotificationManager.IMPORTANCE_LOW);
-            mNotificationManager.createNotificationChannel(notificationChannel);
-        }
-
         if (mNotificationBuilder == null) {
             mNotificationBuilder = new NotificationCompat.Builder(m_parentService, NOTIFICATION_CHANNEL_ID);
         }

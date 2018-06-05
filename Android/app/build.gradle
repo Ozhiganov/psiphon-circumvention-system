@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '27.0.3'
     useLibrary 'org.apache.http.legacy'
 
     repositories{
@@ -82,7 +81,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation files('libs/jackson-core-2.2.0.jar')
     implementation files('libs/achartengine-1.0.0.jar')
