@@ -108,6 +108,7 @@ public class StatusActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
         m_tabHost = (TabHost)findViewById(R.id.tabHost);
@@ -118,13 +119,11 @@ public class StatusActivity
         mRateUnlimitedText = (TextView)findViewById(R.id.rateUnlimitedText);
         mRateLimitSubscribeButton = (Button)findViewById(R.id.rateLimitUpgradeButton);
 
-        // NOTE: super class assumes m_tabHost is initialized in its onCreate
-
         // Don't let this tab change trigger an interstitial ad
         // OnResume() will reset this flag
         m_temporarilyDisableTunneledInterstitial = true;
-        
-        super.onCreate(savedInstanceState);
+
+        setupActivityLayout();
 
         if (shouldShowUntunneledAds()) {
             // Start at the Home tab if the service isn't running and we want to show ads
