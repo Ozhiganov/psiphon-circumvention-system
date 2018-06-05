@@ -54,6 +54,10 @@ docpadConfig = {
         "/scripts/script.js"
       ]
       externalScripts: [
+        {
+          src: "https://widget.psi.cash/v1/psicash.js"
+          attrs: 'async defer data-cfasync="false"'
+        }
       ]
 
 
