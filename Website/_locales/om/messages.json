@@ -4,7 +4,7 @@
         "description": "Slogan text that appears below the hero image on the main page. Should be in all lower-case, as it will be shown with 'small caps' -- but if that doesn't make sense in your language, feel free to use mixed case."
     },
     "page-keyword-source-code": {
-        "message": "Quellcode",
+        "message": "maddaa koodii",
         "description": "web page meta keyword used for SEO"
     },
     "faq-autoproxy-question-toc": {
@@ -16,23 +16,23 @@
         "description": "web page meta keyword used for SEO"
     },
     "privacy-canadian-privacy-commission-link-text": {
-        "message": "Büro des Datenschutzbeauftragten von Kanada",
+        "message": "Office of the Privacy Commissioner of Canada",
         "description": ""
     },
     "faq-vpn-protocol-question": {
-        "message": "Welches VPN-Protokoll wird von Psiphon für Windows verwendet? Warum kann ich nicht verbinden?",
+        "message": "What VPN protocol is used by Psiphon for Windows? Why can't I connect?",
         "description": ""
     },
     "user-guide-android-image-3-annotation-2": {
-        "message": "Zwischen offenen Registerkarten umschalten",
+        "message": "Switch between open tabs",
         "description": "annotation for an image of the Psiphon built-in browser, pointing to the button that switches between open tabs"
     },
     "privacy-bulletin-entry-item-head-how-many-users": {
-        "message": "Wie viele Benutzer sind betroffen",
+        "message": "How many users are affected",
         "description": ""
     },
     "privacy-bulletin-entry-item-head-what-data": {
-        "message": "Welche Benutzerdaten werden gesammelt",
+        "message": "What user data will be collected",
         "description": ""
     },
     "faq-proxy-all-question": {
@@ -44,11 +44,11 @@
         "description": ""
     },
     "about-contact-head": {
-        "message": "Kontaktieren Sie uns",
+        "message": "Contact Us",
         "description": ""
     },
     "privacy-description": {
-        "message": "Psiphons Datenschutzerklärung",
+        "message": "Psiphon's privacy policy",
         "description": "description for the Privacy Policy page"
     },
     "page-keyword-android": {
@@ -72,11 +72,11 @@
         "description": "alt text for an image"
     },
     "download-ios-appstore-psiphon-vpn": {
-        "message": "<strong>Psiphon für iOS</strong> im Apple App Store",
+        "message": "<strong>Psiphon for iOS</strong> in the Apple App Store",
         "description": "Text for link to Psiphon for iOS in the Apple App Store. This is the 'whole device' version of Psiphon, as distinct from the 'Psiphon Browser' app."
     },
     "page-keyword-proxy": {
-        "message": "Proxy",
+        "message": "proxy",
         "description": "web page meta keyword used for SEO"
     },
     "privacy-information-collected-vpndata-whycare-subhead": {
@@ -88,11 +88,11 @@
         "description": ""
     },
     "about-get-latest-info-para-1-developers-list": {
-        "message": "Psiphon-Entwickler",
+        "message": "Psiphon Developers",
         "description": "text for link to the Psiphon Developers mailing list"
     },
     "faq-section-miscellaneous": {
-        "message": "Verschiedenes",
+        "message": "Miscellaneous",
         "description": "Section heading for FAQ entries that don't fit in any other category."
     },
     "about-who-we-are-software-development-para-2": {
@@ -116,7 +116,7 @@
         "description": ""
     },
     "privacy-title": {
-        "message": "Datenschutzerklärung",
+        "message": "Privacy Policy",
         "description": "page title for the Privacy Policy page"
     },
     "faq-information-collected-answer-para-12": {
@@ -140,11 +140,11 @@
         "description": "alt text for an image"
     },
     "page-keyword-open-source": {
-        "message": "quelloffen",
+        "message": "koodii banaa",
         "description": "web page meta keyword used for SEO"
     },
     "license-personal-or-specified-use-header": {
-        "message": "Persönliche oder spezifizierte Verwendung",
+        "message": "Personal or Specified Use",
         "description": ""
     },
     "user-guide-android-ui-logs-image-alt": {
@@ -152,7 +152,7 @@
         "description": "alt text for an image"
     },
     "license-terms-of-use-header": {
-        "message": "Nutzungsbedingungen",
+        "message": "Terms of Use",
         "description": ""
     },
     "faq-android-enable-sideloading-question": {
@@ -168,7 +168,7 @@
         "description": "FAQ answer to 'What protocol does the default Psiphon tunnel use?'."
     },
     "faq-port-restrictions-question": {
-        "message": "Gibt es Port-Einschränkungen bei der Verwendung von Psiphon?",
+        "message": "Are there any port restrictions when using Psiphon?",
         "description": "FAQ question. Note that 'port' is referring to network ports."
     },
     "faq-ie6-docbody-question": {
@@ -176,7 +176,7 @@
         "description": "FAQ question."
     },
     "faq-ssh-plus-question": {
-        "message": "Welches Protokoll verwendet der Standard-Psiphon-Tunnel?",
+        "message": "What protocol does the default Psiphon tunnel use?",
         "description": ""
     },
     "about-who-we-are-software-development-para-1": {
@@ -192,7 +192,7 @@
         "description": ""
     },
     "license-nav-title": {
-        "message": "Lizenz",
+        "message": "License",
         "description": ""
     },
     "user-guide-android-ui-status-image-alt": {
@@ -204,11 +204,11 @@
         "description": ""
     },
     "privacy-meta-title": {
-        "message": "Datenschutzerklärung",
+        "message": "Privacy Policy",
         "description": "meta title for the Privacy Policy page"
     },
     "privacy-bulletin-entry-item-head-how-long-retained": {
-        "message": "Wie lange werden die Daten aufbewahrt",
+        "message": "How long the data will be retained",
         "description": ""
     },
     "faq-vpn-slow-answer-para-1": {
@@ -216,7 +216,7 @@
         "description": ""
     },
     "privacy-bulletin-entry-item-head-when-doing": {
-        "message": "Wann wir es machen",
+        "message": "When we're doing it",
         "description": ""
     },
     "faq-authentic-android-answer-para-2": {
@@ -228,7 +228,7 @@
         "description": "web page meta keyword used for SEO"
     },
     "about-get-latest-info-para-1-announcements-list": {
-        "message": "Psiphon-Ankündigungen",
+        "message": "Psiphon Announcements",
         "description": "text for link to the Psiphon Announcements mailing list"
     },
     "privacy-bulletin-entry-2-what-doing": {
@@ -244,11 +244,11 @@
         "description": "description for the About page"
     },
     "faq-information-collected-answer-para-7-item-1": {
-        "message": "Betriebssystemversion",
+        "message": "Operating system version",
         "description": ""
     },
     "privacy-information-collected-s3-logging-head": {
-        "message": "Speicherzugriffsprotokollierung",
+        "message": "Storage Access Logging",
         "description": "Sub-heading for section describing use of logging access to data storage (aka S3 bucket logging). The way to read this is 'creation of logs for user accesses to data storage'. Psiphon 'stores' websites, downloads, and upgrades (the 'data') in Amazon S3 (the 'storage'). Users 'access' the data storage. And, somtimes, we 'log' those accesses. (For example, if we suspect attackers are accessing the storage, or if it seems the storage is blocked by a country.)"
     },
     "faq-connection-failed-question": {
@@ -256,11 +256,11 @@
         "description": ""
     },
     "faq-ie6-docbody-answer-xpie8": {
-        "message": "Internet Explorer 8 für Windows XP",
+        "message": "Internet Explorer 8 for Windows XP",
         "description": "FAQ answer to the question 'Psiphon for Windows gives the error “doc.body is null or not an object” and does not work.' This text is used as a link to a download."
     },
     "faq-information-collected-answer-head-2": {
-        "message": "Rückmeldung",
+        "message": "Yaada",
         "description": ""
     },
     "faq-information-collected-answer-para-11": {
@@ -268,7 +268,7 @@
         "description": ""
     },
     "faq-authentic-windows-question": {
-        "message": "Ist mein Psiphon für Windows echt?",
+        "message": "Is my Psiphon for Windows authentic?",
         "description": ""
     },
     "faq-ie6-docbody-answer-para-2": {
@@ -280,7 +280,7 @@
         "description": ""
     },
     "sponsor-title": {
-        "message": "Sponsor werden",
+        "message": "Become a Sponsor",
         "description": "Page title for the Sponsorship page"
     },
     "about-who-we-are-partners-para-1": {
@@ -304,11 +304,11 @@
         "description": "FAQ answer to the question 'How do I uninstall Psiphon for Windows?' for Android users."
     },
     "donate-heading": {
-        "message": "Zu Psiphon beitragen",
+        "message": "Contribute to Psiphon",
         "description": "The heading of the page section that shows the donation buttons"
     },
     "user-guide-meta-title": {
-        "message": "Wie Psiphon auf Mobilsystemen und Windows verwendet wird",
+        "message": "How to use Psiphon on Mobile and Windows",
         "description": "meta title for the user guide page"
     },
     "faq-windows-vpn-connect-answer-para-1": {
@@ -316,7 +316,7 @@
         "description": ""
     },
     "faq-get-updated-version-question": {
-        "message": "Wie erhalte ich eine aktualisierte Version von Psiphon?",
+        "message": "How do I get an updated version of Psiphon?",
         "description": "FAQ question"
     },
     "faq-autoproxy-answer-para-1": {
@@ -328,7 +328,7 @@
         "description": "FAQ answer to the question 'Psiphon for Windows gives the error “doc.body is null or not an object” and does not work.'"
     },
     "user-guide-android-head": {
-        "message": "Psiphon für Android",
+        "message": "Psiphon for Android",
         "description": "heading for the Android section of the User Guide"
     },
     "faq-unsupported-platforms-question": {
@@ -340,7 +340,7 @@
         "description": "A FAQ subsection of the 'Troubleshooting' section. This is for problems that are Android-specific."
     },
     "privacy-bulletin-entry-2-title": {
-        "message": "2015-06-01: Aktualisierung der Datenschutzerklärung",
+        "message": "2015-06-01: Privacy Policy update",
         "description": ""
     },
     "index-description": {
@@ -348,7 +348,7 @@
         "description": "Page description for the index page"
     },
     "faq-title": {
-        "message": "Häufig gestellte Fragen",
+        "message": "Frequently Asked Questions",
         "description": "title for the FAQ page"
     },
     "privacy-information-collected-s3-logging-para-1": {
@@ -356,11 +356,11 @@
         "description": ""
     },
     "about-who-we-are-exec-team-head": {
-        "message": "Führungsteam",
+        "message": "Exec Team",
         "description": ""
     },
     "page-keyword-ssh": {
-        "message": "SSH",
+        "message": "ssh",
         "description": "web page meta keyword used for SEO"
     },
     "faq-information-collected-answer-para-4": {
@@ -376,7 +376,7 @@
         "description": "Paragraph text in the 'What does Psiphon do with your VPN data?' subsection of the 'User VPN Data' section of the Privacy page."
     },
     "page-keyword-blog": {
-        "message": "Blog",
+        "message": "blog",
         "description": "web page meta keyword used for SEO"
     },
     "blog-index-intro": {
@@ -408,7 +408,7 @@
         "description": ""
     },
     "user-guide-android-ui-statistics-image-annotation-3": {
-        "message": "Durch Psiphon empfangene Daten",
+        "message": "Data received through Psiphon",
         "description": "annotation for an image of the Psiphon's statistics view, pointing to the received data amount"
     },
     "faq-proxy-all-answer-para-1": {
@@ -424,11 +424,11 @@
         "description": ""
     },
     "license-meta-title": {
-        "message": "Endbenutzer-Lizenzvereinbarung",
+        "message": "End-User License Agreement",
         "description": ""
     },
     "faq-information-collected-question": {
-        "message": "Welche Benutzerinformationen sammelt Psiphon?",
+        "message": "What user information does Psiphon collect?",
         "description": "FAQ question."
     },
     "faq-information-collected-answer-para-2-item-7": {
@@ -436,7 +436,7 @@
         "description": ""
     },
     "privacy-bulletin-title": {
-        "message": "Datenschutzberichte",
+        "message": "Privacy Bulletins",
         "description": ""
     },
     "license-para-2": {
@@ -444,11 +444,11 @@
         "description": "Please modify the Wikipedia link to point to the correct language entry"
     },
     "page-keyword-instructions": {
-        "message": "Anweisungen",
+        "message": "instructions",
         "description": "web page meta keyword used for SEO"
     },
     "page-keyword-developers": {
-        "message": "Entwickler",
+        "message": "developers",
         "description": "web page meta keyword used for SEO"
     },
     "privacy-information-collected-vpndata-whatdoespsiphondowith-subhead": {
@@ -476,7 +476,7 @@
         "description": ""
     },
     "page-keyword-code": {
-        "message": "Code",
+        "message": "code",
         "description": "web page meta keyword used for SEO"
     },
     "faq-vpn-dns-question": {
@@ -484,7 +484,7 @@
         "description": ""
     },
     "user-guide-android-ui-statistics-image-annotation-2": {
-        "message": "Durch Psiphon gesendete Daten",
+        "message": "Data sent through Psiphon",
         "description": "annotation for an image of the Psiphon's statistics view, pointing to the sent data amount"
     },
     "what-is-psiphon-body-para-1": {
@@ -496,11 +496,11 @@
         "description": "description for the user guide page"
     },
     "blog-index-nav-title": {
-        "message": "Unser Blog",
+        "message": "Our Blog",
         "description": "Text for the navigation bar link to the blog"
     },
     "about-get-latest-info-para-1-users-list": {
-        "message": "Psiphon-Benutzergruppe",
+        "message": "Psiphon User Group",
         "description": "text for link to the Psiphon Users mailing list"
     },
     "privacy-information-collected-vpndata-whydoespsiphonneed-subhead": {
@@ -528,7 +528,7 @@
         "description": "FAQ answer to the question 'Why does my antivirus or firewall identify Psiphon as a threat?'"
     },
     "alert-heading": {
-        "message": "ALARM",
+        "message": "ALERT",
         "description": "Heading of the alert that shows on the main page when there's a security or other concern that needs to be brought to the attention of users"
     },
     "license-personal-or-specified-use-para": {
@@ -536,11 +536,11 @@
         "description": ""
     },
     "faq-browser-compatibility-question": {
-        "message": "Ist Psiphon für Windows kompatibel mit dem Internet Explorer, Firefox und dem Chrome Webbrowser?",
+        "message": "Is Psiphon for Windows compatible with Internet Explorer, Firefox, and Chrome web browsers?",
         "description": ""
     },
     "page-keyword-landing-page": {
-        "message": "Einstiegsseite",
+        "message": "landing page",
         "description": "web page meta keyword used for SEO"
     },
     "faq-authentic-android-answer-para-3": {
@@ -556,7 +556,7 @@
         "description": "FAQ question."
     },
     "faq-authentic-android-question": {
-        "message": "Ist mein Psiphon für Android echt?",
+        "message": "Is my Psiphon for Android authentic?",
         "description": ""
     },
     "psiphon": {
@@ -564,7 +564,7 @@
         "description": "The name of the product. Probably not translated or transliterated for most languages"
     },
     "download-meta-title": {
-        "message": "Android-App und Windows-Client herunterladen",
+        "message": "Download Android app and Windows client",
         "description": "meta title for the download page"
     },
     "faq-unsupported-platforms-answer-para-1": {
@@ -580,15 +580,15 @@
         "description": "The Psiphon for Windows client can be authenticated by checking the certificate used to sign it has the correct thumbprint. The certificate is valid for a certain date range, and the thumbprint is shown below this sentence. 'SHA1' is the name of a hash algorithm, used to calculate the thumbprint (and is probably not translated)."
     },
     "what-is-psiphon-heading": {
-        "message": "Was ist Psiphon?",
+        "message": "What is Psiphon?",
         "description": ""
     },
     "user-guide-nav-title": {
-        "message": "Benutzerhandbuch",
+        "message": "User Guide",
         "description": "text for the user guide page navigation item"
     },
     "page-keyword-updates": {
-        "message": "Aktualisierungen",
+        "message": "updates",
         "description": "web page meta keyword used for SEO"
     },
     "faq-authentic-windows-answer-para-3": {
@@ -596,7 +596,7 @@
         "description": "The Psiphon for Windows client can be authenticated by checking the certificate used to sign it has the correct thumbprint. The certificate is valid for a certain date range, and the thumbprint is shown below this sentence. 'SHA1' is the name of a hash algorithm, used to calculate the thumbprint (and is probably not translated)."
     },
     "faq-meta-title": {
-        "message": "Häufig gestellte Fragen",
+        "message": "Frequently Asked Questions",
         "description": "meta title for the FAQ page"
     },
     "faq-ssh-plus-answer-para-1": {
@@ -604,15 +604,15 @@
         "description": ""
     },
     "license-title": {
-        "message": "Psiphon Endbenutzer-Lizenzvereinbarung",
+        "message": "Psiphon End-User License Agreement",
         "description": ""
     },
     "privacy-bulletin-description": {
-        "message": "Datenschutzberichte",
+        "message": "Privacy Bulletins",
         "description": ""
     },
     "user-guide-android-ui-statistics-image-annotation-1": {
-        "message": "Verbindungsdauer",
+        "message": "Connection duration",
         "description": "annotation for an image of the Psiphon's statistics view, pointing to the connection duration"
     },
     "privacy-bulletin-entry-1-what-doing": {
@@ -624,7 +624,7 @@
         "description": ""
     },
     "open-source-title": {
-        "message": "Quelloffen",
+        "message": "Open Source",
         "description": ""
     },
     "license-terms-of-use-para": {
@@ -632,15 +632,15 @@
         "description": ""
     },
     "faq-configure-applications-question": {
-        "message": "Wie kann ich Anwendungen für die Verwendung des Psiphon-Tunnels konfigurieren?",
+        "message": "How do I configure applications to use the Psiphon tunnel?",
         "description": ""
     },
     "page-keyword-circumvention": {
-        "message": "Umgehung",
+        "message": "circumvention",
         "description": "web page meta keyword used for SEO"
     },
     "open-source-meta-title": {
-        "message": "Quelloffen",
+        "message": "Open Source",
         "description": ""
     },
     "privacy-bulletin-entry-2-why-doing": {
@@ -652,7 +652,7 @@
         "description": ""
     },
     "user-guide-android-ui-statistics-image-annotation-5": {
-        "message": "Durch Psiphon komprimierte empfangene Daten",
+        "message": "Received data compressed through Psiphon",
         "description": "annotation for an image of the Psiphon's statistics view, pointing to the savings in received data due to compression"
     },
     "faq-av-firewall-question": {
@@ -672,7 +672,7 @@
         "description": "FAQ answer to the question 'Why do Android mobile hotspot and USB tethering not work through Psiphon?'"
     },
     "user-guide-windows-head": {
-        "message": "Psiphon für Windows",
+        "message": "Psiphon for Windows",
         "description": "heading for the Android section of the User Guide"
     },
     "faq-periodic-disconnect-answer-para-1": {
@@ -688,11 +688,11 @@
         "description": ""
     },
     "user-guide-title": {
-        "message": "Wie Psiphon verwendet wird",
+        "message": "How to Use Psiphon",
         "description": "page title for the user guide page"
     },
     "faq-description": {
-        "message": "Antworten zu häufig gestellten Fragen über Psiphon",
+        "message": "Answers to frequently asked questions about Psiphon",
         "description": "description for the FAQ page"
     },
     "faq-information-collected-answer-para-2-item-9": {
@@ -700,7 +700,7 @@
         "description": ""
     },
     "user-guide-android-image-3-annotation-5": {
-        "message": "Neue Registerkarte öffnen",
+        "message": "Open new tab",
         "description": "annotation for an image of the Psiphon built-in browser, pointing to the button that opens a new tab"
     },
     "download-via-email-description": {
@@ -708,7 +708,7 @@
         "description": ""
     },
     "download-via-email-head": {
-        "message": "Via E-Mail herunterladen",
+        "message": "Download via Email",
         "description": ""
     },
     "donate-body": {
@@ -716,11 +716,11 @@
         "description": "The body of the page section that shows the donation buttons"
     },
     "faq-information-collected-answer-para-13-item-3": {
-        "message": "Die Größe der E-Mail.",
+        "message": "The size of the email.",
         "description": ""
     },
     "download-windows-direct": {
-        "message": "Psiphon für Windows",
+        "message": "Psiphon for Windows",
         "description": "text for link to Psiphon for Windows download"
     },
     "privacy-information-collected-vpndata-whopsiphonshareswith-para-2": {
@@ -744,7 +744,7 @@
         "description": "This is a FAQ question. Previously, users with old Android devices could still tunnel the whole device if the device was rooted. This functionality was removed in December of 2015. This question/answer tells them about that and what they can do."
     },
     "page-keyword-how-to": {
-        "message": "Kurzanleitung",
+        "message": "how to",
         "description": "web page meta keyword used for SEO"
     },
     "sponsor-description": {
@@ -768,7 +768,7 @@
         "description": ""
     },
     "privacy-bulletin-entry-1-when-doing": {
-        "message": "Protokollierung wird von 2014-04-17T15:00Z bis 2014-04-18T15:00Z aktiviert.",
+        "message": "Logging will be enabled from 2014-04-17T15:00Z to 2014-04-18T15:00Z.",
         "description": ""
     },
     "privacy-information-collected-vpndata-whydoespsiphonneed-para-1-list-start": {
@@ -776,7 +776,7 @@
         "description": "Paragraph text in the 'Why does Psiphon need these statistics?' subsection of the 'User VPN Data' section of the Privacy page. This paragraph serves as preamble for a detailed list, which is why it ends with a colon."
     },
     "nav-language-title": {
-        "message": "Wählen Sie Ihre Sprache",
+        "message": "Choose your language",
         "description": ""
     },
     "faq-get-updated-version-answer-para-2": {
@@ -784,7 +784,7 @@
         "description": "FAQ answer to the question 'How do I get an updated version of Psiphon?' for Windows users."
     },
     "faq-uninstall-windows-question": {
-        "message": "Wie deinstalliere ich Psiphon für Windows?",
+        "message": "How do I uninstall Psiphon for Windows?",
         "description": "FAQ question"
     },
     "user-guide-android-para-4": {
@@ -792,7 +792,7 @@
         "description": ""
     },
     "user-guide-android-image-3-annotation-4": {
-        "message": "Aktuelle Seite zu den Lesezeichen hinzufügen",
+        "message": "Bookmark current page",
         "description": "annotation for an image of the Psiphon built-in browser, pointing to the button that bookmarks the current page"
     },
     "user-guide-windows-para-2": {
@@ -816,15 +816,15 @@
         "description": "web page meta keyword used for SEO"
     },
     "page-keyword-partnerships": {
-        "message": "Partnerschaften",
+        "message": "partnerships",
         "description": "web page meta keyword used for SEO"
     },
     "page-keyword-development": {
-        "message": "Entwicklung",
+        "message": "development",
         "description": "web page meta keyword used for SEO"
     },
     "blog-index-title": {
-        "message": "Teamblog",
+        "message": "Team Blog",
         "description": ""
     },
     "about-who-we-are-software-development-para-3": {
@@ -832,7 +832,7 @@
         "description": ""
     },
     "page-keyword-windows": {
-        "message": "Windows",
+        "message": "windows",
         "description": "web page meta keyword used for SEO"
     },
     "privacy-para-3": {
@@ -844,7 +844,7 @@
         "description": ""
     },
     "main-pick-three-head-1": {
-        "message": "Vertrauen, Geschwindigkeit, Einfachheit: Nimm drei",
+        "message": "Trust, Speed, Simplicity: pick three",
         "description": ""
     },
     "faq-android-upgrade-bug-answer-para-1": {
@@ -852,7 +852,7 @@
         "description": "FAQ answer to the question 'After upgrading the Psiphon for Android app, it won't connect.'"
     },
     "about-who-we-are-software-development-head": {
-        "message": "Softwareentwicklung",
+        "message": "Software Development",
         "description": ""
     },
     "faq-connection-failed-answer-para-1": {
@@ -864,11 +864,11 @@
         "description": "alt text for an image"
     },
     "user-guide-android-ui-status-image-annotation-4": {
-        "message": "<span style=\"color:grey\">Grau</span>: Verbinden<br><span style=\"color:red\">Rot</span>: nicht verbunden<br><span style=\"color:Blue\">Blau</span>: verbunden",
+        "message": "<span style=\"color:grey\">Grey</span>: connecting<br><span style=\"color:red\">Red</span>: not connected<br><span style=\"color:Blue\">Blue</span>: connected",
         "description": "annotation for an image of the Psiphon's status view, pointing to the colored status icon in the middle of the Status panel"
     },
     "privacy-bulletin-entry-item-head-why-doing": {
-        "message": "Warum wir es machen",
+        "message": "Why we're doing it",
         "description": ""
     },
     "privacy-information-collected-vpndata-whopsiphonshareswith-subhead": {
@@ -888,7 +888,7 @@
         "description": "FAQ question. 'Metro' or 'Modern' is the fancy user interface that Microsoft introduced with Windows 8."
     },
     "resources-nav-title": {
-        "message": "Ressourcen",
+        "message": "Resources",
         "description": "title for the Resources"
     },
     "faq-mail-apps-ports-answer-para-1": {
@@ -904,15 +904,15 @@
         "description": "alt text for an image"
     },
     "faq-section-installing-running-updating": {
-        "message": "Psiphon installieren, ausführen und aktualisieren",
+        "message": "Installing, Running, and Updating Psiphon",
         "description": "Section heading for FAQ entries that pertain to running and installing/updating/upgrading the Psiphon client software."
     },
     "blog-index-subscribe": {
-        "message": "Abonnieren",
+        "message": "Subscribe",
         "description": ""
     },
     "page-keyword-donate": {
-        "message": "spenden",
+        "message": "Arjoomii",
         "description": "web page meta keyword used for SEO"
     },
     "faq-android-enable-sideloading-answer-para-1": {
@@ -924,11 +924,11 @@
         "description": ""
     },
     "faq-ie6-docbody-answer-xpie7": {
-        "message": "Internet Explorer 7 für Windows XP",
+        "message": "Internet Explorer 7 for Windows XP",
         "description": "FAQ answer to the question 'Psiphon for Windows gives the error “doc.body is null or not an object” and does not work.' This text is used as a link to a download."
     },
     "page-keyword-sponsor": {
-        "message": "Sponsor",
+        "message": "sponsor",
         "description": "web page meta keyword used for SEO"
     },
     "nav-title": {
@@ -944,7 +944,7 @@
         "description": ""
     },
     "page-keyword-help": {
-        "message": "Hilfe",
+        "message": "help",
         "description": "web page meta keyword used for SEO"
     },
     "privacy-information-collected-vpndata-whydoespsiphonneed-para-1-item-1": {
@@ -952,7 +952,7 @@
         "description": "Bullet list text under 'Why does Psiphon need these statistics?' subsection of the 'User VPN Data' section of the Privacy page."
     },
     "about-who-we-are-partners-head": {
-        "message": "Partnerschaften",
+        "message": "Partnerships",
         "description": ""
     },
     "blog-index-description": {
@@ -960,7 +960,7 @@
         "description": ""
     },
     "faq-information-collected-answer-para-7-item-4": {
-        "message": "Wie viel freien Speicher Ihr Computer hat",
+        "message": "How much free memory your computer has",
         "description": ""
     },
     "page-keyword-app-store": {
@@ -968,7 +968,7 @@
         "description": "web page meta keyword used for SEO"
     },
     "page-keyword-psiphon-team": {
-        "message": "Psiphon-Team",
+        "message": "psiphon team",
         "description": "web page meta keyword used for SEO"
     },
     "faq-information-collected-answer-para-13-item-1": {
@@ -984,11 +984,11 @@
         "description": ""
     },
     "about-title": {
-        "message": "Über uns",
+        "message": "About Us",
         "description": "page title for the About page"
     },
     "faq-information-collected-answer-para-8-item-1": {
-        "message": "Android-Version",
+        "message": "Android version",
         "description": ""
     },
     "privacy-bulletin-entry-1-how-many-users": {
@@ -1012,11 +1012,11 @@
         "description": ""
     },
     "faq-information-collected-answer-para-2-item-5": {
-        "message": "Sitzungsanzahl und Sitzungsdauer",
+        "message": "Session count and session duration",
         "description": ""
     },
     "faq-orig-file-purpose-question": {
-        "message": "Was ist die Datei “psiphon3.exe.orig”?",
+        "message": "What is the file “psiphon3.exe.orig”?",
         "description": ""
     },
     "download-ios-appstore-psiphon-vpn-description": {
@@ -1024,11 +1024,11 @@
         "description": "Description of Psiphon for iOS on the download page. Partly intended to distinguish 'Psiphon for iOS' from 'Psiphon Browser for iOS'."
     },
     "index-meta-title": {
-        "message": "Unzensierter Internetzugriff für Windows und Mobil",
+        "message": "Uncensored Internet access for Windows and Mobile",
         "description": "Meta title for the index page"
     },
     "faq-information-collected-answer-para-8-item-2": {
-        "message": "Gerätemodell",
+        "message": "Device model",
         "description": ""
     },
     "page-keyword-play-store": {
@@ -1036,19 +1036,19 @@
         "description": "web page meta keyword used for SEO"
     },
     "license-termination-terms-of-service-violations-header": {
-        "message": "Kündigung; Nutzungsbedingungsverstöße",
+        "message": "Termination; Terms of Service Violations",
         "description": ""
     },
     "faq-section-how-psiphon-works": {
-        "message": "Wie Psiphon funktioniert",
+        "message": "How Psiphon Works",
         "description": "Section heading for FAQ entries that pertain to explaining how Psiphon works -- that is, how it helps users to circumvent/bypass censorship."
     },
     "user-guide-android-image-3-annotation-1": {
-        "message": "Psiphon läuft",
+        "message": "Psiphon is running",
         "description": "annotation for an image of the Psiphon built-in browser, pointing out the status icon that shows that Psiphon is running"
     },
     "blog-index-posts-in-your-language": {
-        "message": "Beiträge in Ihrer Sprache",
+        "message": "Posts in your language",
         "description": "TRANSLATORS NOTE: Please translate it as 'Posts in Farsi', 'Posts in Russian', etc. This is the heading for the list of blog posts that have been translated into the user's language."
     },
     "download-ios-appstore-psiphon-browser-description": {
@@ -1056,7 +1056,7 @@
         "description": "Description of Psiphon Browser for iOS on the download page. Partly intended to distinguish 'Psiphon Browser for iOS' from 'Psiphon for iOS'."
     },
     "faq-isp-traffic-question": {
-        "message": "Kann mein ISP sehen, was ich im Internet mache, während ich Psiphon verwende?",
+        "message": "Can my ISP see what I'm doing on the Internet while I'm using Psiphon?",
         "description": ""
     },
     "open-source-para-3-list-start": {
@@ -1064,11 +1064,11 @@
         "description": ""
     },
     "download-now-button": {
-        "message": "Jetzt herunterladen",
+        "message": "Download Now",
         "description": "The text on the Download Now button"
     },
     "blog-index-posts-in-english": {
-        "message": "Beiträge in Englisch",
+        "message": "Posts in English",
         "description": "Heading for the list of blog posts that are available in English"
     },
     "user-guide-android-para-3": {
@@ -1076,7 +1076,7 @@
         "description": ""
     },
     "user-guide-android-ui-status-image-annotation-5": {
-        "message": "Zeigt, welche Version von Psiphon Sie derzeit ausführen",
+        "message": "Shows what version of Psiphon you are currently running",
         "description": "annotation for an image of the Psiphon's status view, pointing to the currently running Psiphon version number"
     },
     "download-android-playstore-pro-description": {
@@ -1084,11 +1084,11 @@
         "description": ""
     },
     "faq-section-compatibility": {
-        "message": "Kompatibilität mit anderen Anwendungen",
+        "message": "Compatibility with Other Applications",
         "description": "Section heading for FAQ entries that pertain to Psiphon's compatibility with other software (web browsers, etc.)."
     },
     "open-source-nav-title": {
-        "message": "Quelloffen",
+        "message": "Open Source",
         "description": ""
     },
     "license-statement-of-limitations-of-liability-para": {
@@ -1096,23 +1096,23 @@
         "description": ""
     },
     "faq-ip-change-question": {
-        "message": "Warum ändert sich meine Psiphon-IP-Adresse häufig?",
+        "message": "Why does my Psiphon IP address frequently change?",
         "description": ""
     },
     "faq-periodic-disconnect-question": {
-        "message": "Warum trennt sich meine Psiphon-Verbindung manchmal?",
+        "message": "Why does my Psiphon connection sometimes disconnect?",
         "description": "FAQ question."
     },
     "privacy-bulletin-meta-title": {
-        "message": "Datenschutzberichte",
+        "message": "Privacy Bulletins",
         "description": ""
     },
     "privacy-ontario-privacy-commissioner-link-text": {
-        "message": "Büro des Informations- und Datenschutzbeauftragten von Ontario",
+        "message": "Office of the Information and Privacy Commissioner of Ontario",
         "description": ""
     },
     "about-who-we-are-ops-head": {
-        "message": "Tätigkeiten und Reichweite",
+        "message": "Operations and Outreach",
         "description": ""
     },
     "faq-information-collected-answer-head-4": {
@@ -1120,7 +1120,7 @@
         "description": "this is referring to the general idea of app stores, like the Google Play Store, Amazon AppStore, Apple App Store"
     },
     "privacy-bulletin-entry-item-head-what-doing": {
-        "message": "Was wir machen",
+        "message": "What we're doing",
         "description": ""
     },
     "main-gets-you-where-you-want-head-1": {
@@ -1136,11 +1136,11 @@
         "description": ""
     },
     "faq-information-collected-answer-para-2-item-4": {
-        "message": "Wie oft werden neue Server entdeckt",
+        "message": "How often new servers are discovered",
         "description": ""
     },
     "privacy-information-collected-client-head": {
-        "message": "Psiphon-Client-Software",
+        "message": "Psiphon Client Software",
         "description": "Sub-heading on the Privacy Policy page above the info about what user information is collected by the Psiphon client software"
     },
     "open-source-para-1": {
@@ -1148,11 +1148,11 @@
         "description": "Paragraph on the Open Source page indicating that Psiphon is open source. It is followed by a list of links to our Bitbucket and Github project pages."
     },
     "main-gets-you-where-you-want-head-2": {
-        "message": "Durch Ihr Land, Unternehmen oder Ihren Campus zensiert?",
+        "message": "Censored by your country, corporation, or campus?",
         "description": ""
     },
     "page-keyword-download": {
-        "message": "herunterladen",
+        "message": "download",
         "description": "web page meta keyword used for SEO"
     },
     "what-is-psiphon-body-para-2": {
@@ -1164,7 +1164,7 @@
         "description": ""
     },
     "page-keyword-manual": {
-        "message": "Anleitung",
+        "message": "manual",
         "description": "web page meta keyword used for SEO"
     },
     "privacy-bulletin-entry-1-how-long-retained": {
@@ -1180,15 +1180,15 @@
         "description": "Sub-heading on the Privacy Policy page above the info about what user information is collected by the Psiphon websites"
     },
     "footer-license": {
-        "message": "Seiteninhalt lizenziert unter",
+        "message": "Site content licensed under",
         "description": "The beginning of the 'Licensed under [license name here]' footer text"
     },
     "open-source-para-2": {
-        "message": "Psiphon-Clients verwenden die folgenden quelloffenen Komponenten:",
+        "message": "Psiphon clients use the following open source components:",
         "description": ""
     },
     "page-keyword-contact": {
-        "message": "Kontakt",
+        "message": "contact",
         "description": "web page meta keyword used for SEO"
     },
     "faq-get-updated-version-answer-para-3": {
@@ -1196,7 +1196,7 @@
         "description": "FAQ answer to the question 'How do I get an updated version of Psiphon?' if the user believes that the automatic updating feature isn't working (or is blocked)."
     },
     "download-title": {
-        "message": "Psiphon herunterladen",
+        "message": "Download Psiphon",
         "description": "page title for the download page"
     },
     "faq-authentic-android-answer-para-1": {
@@ -1204,11 +1204,11 @@
         "description": ""
     },
     "download-android-direct": {
-        "message": "Psiphon für Android direkt herunterladen",
+        "message": "Psiphon for Android direct download",
         "description": "text for link to Psiphon for Android direct download"
     },
     "page-keyword-home-page": {
-        "message": "Homepage",
+        "message": "fuula jalqabaa",
         "description": "web page meta keyword used for SEO"
     },
     "faq-information-collected-answer-para-6": {
@@ -1216,7 +1216,7 @@
         "description": ""
     },
     "about-who-we-are-head": {
-        "message": "Wer wir sind",
+        "message": "Who We Are",
         "description": ""
     },
     "faq-browser-compatibility-answer-para-1": {
@@ -1228,15 +1228,15 @@
         "description": ""
     },
     "faq-information-collected-answer-head-3": {
-        "message": "E-Mail-Beantworter",
+        "message": "Email Responder",
         "description": ""
     },
     "download-android-amazon": {
-        "message": "Psiphon für Android im Amazon AppStore",
+        "message": "Psiphon for Android in the Amazon AppStore",
         "description": "text for link to Psiphon for Android in the Amazon AppStore"
     },
     "download-ios-appstore-psiphon-browser": {
-        "message": "<strong>Psiphon Browser für iOS</strong> im Apple App Store",
+        "message": "<strong>Psiphon Browser for iOS</strong> in the Apple App Store",
         "description": "Text for link to Psiphon Browser for iOS in the Apple App Store. This app is distinct from the 'Psiphon for iOS' app that tunnels the whole device."
     },
     "user-guide-windows-image-1-alt": {
@@ -1248,11 +1248,11 @@
         "description": ""
     },
     "page-keyword-user-guide": {
-        "message": "Benutzerhandbuch",
+        "message": "user guide",
         "description": "web page meta keyword used for SEO"
     },
     "about-meta-title": {
-        "message": "Über uns",
+        "message": "About Us",
         "description": "meta title for the About page"
     },
     "faq-information-collected-answer-para-13-item-2": {
@@ -1260,7 +1260,7 @@
         "description": ""
     },
     "sponsor-banner-alt-text": {
-        "message": "Sponsorenbanner",
+        "message": "Sponsor banner",
         "description": "alt text for an image"
     },
     "faq-port-restrictions-answer-para-1": {
@@ -1272,7 +1272,7 @@
         "description": "This refers to the Google Play Store, Amazon's AppStore, and any similar app stores"
     },
     "sponsor-meta-title": {
-        "message": "Sponsoring, Werbung und Spenden",
+        "message": "Sponsorship, advertising, and donations",
         "description": "Page title for the Sponsorship page"
     },
     "privacy-information-collected-vpndata-whopsiphonshareswith-para-3": {
@@ -1280,15 +1280,15 @@
         "description": "Paragraph text in the 'Who does Psiphon share these statistics with?' subsection of the 'User VPN Data' section of the Privacy page."
     },
     "faq-check-version-question": {
-        "message": "Wie kann ich meine aktuelle Version von Psiphon überprüfen?",
+        "message": "How do I check my current version of Psiphon?",
         "description": ""
     },
     "site-title": {
-        "message": "Psiphon: Befreien Sie Ihr Netz",
+        "message": "Psiphon: free your net",
         "description": "the title for the site"
     },
     "sponsor-header-sponsored-by": {
-        "message": "Gefördert durch",
+        "message": "Spoonsera",
         "description": ""
     },
     "privacy-information-collected-vpndata-whatdoespsiphondowith-para-2": {
@@ -1296,7 +1296,7 @@
         "description": "Paragraph text in the 'What does Psiphon do with your VPN data?' subsection of the 'User VPN Data' section of the Privacy page."
     },
     "page-keyword-privacy": {
-        "message": "Datenschutz",
+        "message": "privacy",
         "description": "web page meta keyword used for SEO"
     },
     "faq-configure-applications-answer-para-1": {
@@ -1304,11 +1304,11 @@
         "description": ""
     },
     "faq-section-privacy-security": {
-        "message": "Datenschutz und Sicherheit",
+        "message": "Privacy and Security",
         "description": "Section heading for FAQ entries that pertain to the privacy and security of Psiphon."
     },
     "faq-vpn-protocol-answer-para-1": {
-        "message": "Psiphon verwendet das L2TP/IPsec VPN-Protokoll.",
+        "message": "Psiphon uses the L2TP/IPsec VPN protocol.",
         "description": ""
     },
     "license-distribution-header": {
@@ -1316,7 +1316,7 @@
         "description": ""
     },
     "faq-information-collected-answer-para-7-item-2": {
-        "message": "Antivirus-Version",
+        "message": "Anti-virus version",
         "description": ""
     },
     "faq-reset-system-proxy-question": {
@@ -1336,7 +1336,7 @@
         "description": ""
     },
     "faq-isp-traffic-question-toc": {
-        "message": "Kann mein ISP sehen, was ich im Internet mache, während ich Psiphon verwende?",
+        "message": "Can my ISP see what I'm doing on the Internet while I'm using Psiphon?",
         "description": ""
     },
     "faq-vpn-dns-answer-para-1": {
@@ -1344,11 +1344,11 @@
         "description": ""
     },
     "faq-section-troubleshooting": {
-        "message": "Fehlerbehebung",
+        "message": "Troubleshooting",
         "description": "Section heading for FAQ entries that help the user figure out why Psiphon isn't working for them and solve the problem."
     },
     "about-get-latest-info-head": {
-        "message": "Holen Sie sich die neuesten Informationen über Psiphon",
+        "message": "Get the latest information about Psiphon",
         "description": ""
     },
     "user-guide-windows-image-2-alt": {
@@ -1364,7 +1364,7 @@
         "description": ""
     },
     "download-nav-title": {
-        "message": "Herunterladen",
+        "message": "Gad fe'i",
         "description": "text for the Download page navigation item"
     },
     "faq-android-enable-sideloading-answer-para-0": {
@@ -1376,11 +1376,11 @@
         "description": "Sub-heading on the Privacy Policy page for the section describing handling of user traffic data through the Psiphon VPN"
     },
     "faq-information-collected-answer-para-2-item-2": {
-        "message": "Anzahl der Aktualisierungen",
+        "message": "Number of upgrades",
         "description": ""
     },
     "page-keyword-censorship": {
-        "message": "Zensur",
+        "message": "censorship",
         "description": "web page meta keyword used for SEO"
     },
     "faq-section-verify-psiphon-authentic": {
@@ -1388,7 +1388,7 @@
         "description": "Section heading for FAQ entries that help users to make sure the Psiphon client they downloaded is authentic and legitimate."
     },
     "blog-index-meta-title": {
-        "message": "Das Psiphon-Teamblog",
+        "message": "The Psiphon Team Blog",
         "description": ""
     },
     "user-guide-windows-para-4": {
@@ -1400,11 +1400,11 @@
         "description": ""
     },
     "page-keyword-advertise": {
-        "message": "werben",
+        "message": "beeksisaa",
         "description": "web page meta keyword used for SEO"
     },
     "privacy-bulletin-entry-item-head-who-will-see": {
-        "message": "Wer außer Psiphon Inc. wird diese Daten sehen",
+        "message": "Who besides Psiphon Inc. will see this data",
         "description": ""
     },
     "privacy-information-collected-vpndata-whydoespsiphonneed-para-1-item-4": {
@@ -1416,7 +1416,7 @@
         "description": "alt text for an image"
     },
     "faq-information-collected-answer-head-1": {
-        "message": "Psiphon-Server",
+        "message": "Psiphon Servers",
         "description": ""
     },
     "privacy-bulletin-entry-1-who-will-see": {
@@ -1428,7 +1428,7 @@
         "description": ""
     },
     "user-guide-android-ui-status-image-annotation-2": {
-        "message": "Registerkarte Status ist ausgewählt",
+        "message": "Status Tab is selected",
         "description": "annotation for an image of the Psiphon's status view, pointing to the highlighted Status tab"
     },
     "faq-authentic-android-answer-alert": {
@@ -1440,11 +1440,11 @@
         "description": ""
     },
     "page-keyword-http-proxy": {
-        "message": "HTTP-Proxy",
+        "message": "http proxy",
         "description": "web page meta keyword used for SEO"
     },
     "about-nav-title": {
-        "message": "Über uns",
+        "message": "About Us",
         "description": "text for the About page navigation item"
     },
     "faq-authentic-windows-answer-para-2020": {
@@ -1464,7 +1464,7 @@
         "description": ""
     },
     "privacy-information-collected-client-advertising-networks-head": {
-        "message": "Werbenetzwerke",
+        "message": "Advertising Networks",
         "description": "Sub-heading for section describing use of Advertising Networks and what info they collect"
     },
     "privacy-information-collected-vpndata-whycare-para-1": {
@@ -1476,11 +1476,11 @@
         "description": ""
     },
     "user-guide-android-image-3-annotation-3": {
-        "message": "Aktuelle Registerkarte schließen",
+        "message": "Close current tab",
         "description": "annotation for an image of the Psiphon built-in browser, pointing to the button that closes the current tab"
     },
     "privacy-nav-title": {
-        "message": "Datenschutzerklärung",
+        "message": "Privacy Policy",
         "description": "text for the Privacy Policy page navigation item"
     },
     "sponsor-para-3": {
@@ -1500,7 +1500,7 @@
         "description": ""
     },
     "page-keyword-contribute": {
-        "message": "beitragen",
+        "message": "contribute",
         "description": "web page meta keyword used for SEO"
     },
     "faq-av-firewall-answer-para-2": {
@@ -1520,7 +1520,7 @@
         "description": ""
     },
     "download-description": {
-        "message": "Psiphon direkt und frei für Windows und Android herunterladen",
+        "message": "Direct, free Psiphon download for Windows and Android",
         "description": "title for the download page"
     },
     "privacy-information-collected-websites-google-analytics-head": {
@@ -1528,7 +1528,7 @@
         "description": "Sub-heading for section describing use of Google Analytics and what info they collect"
     },
     "download-direct-head": {
-        "message": "Direkte Downloads",
+        "message": "Direct Downloads",
         "description": ""
     },
     "faq-proxy-all-ios-browser-answer-para-1": {
@@ -1556,11 +1556,11 @@
         "description": ""
     },
     "user-guide-android-ui-statistics-image-annotation-4": {
-        "message": "Durch Psiphon komprimierte gesendete Daten",
+        "message": "Sent data compressed through Psiphon",
         "description": "annotation for an image of the Psiphon's statistics view, pointing to the savings in sent data due to compression"
     },
     "user-guide-android-ui-logs-image-annotation-1": {
-        "message": "Psiphon-Aktivitätsprotokolle",
+        "message": "Psiphon activity logs",
         "description": "annotation for an image of the Psiphon's logs view, pointing to the logs"
     }
 }
