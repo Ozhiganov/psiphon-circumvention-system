@@ -413,6 +413,12 @@ class ServerInstance(object):
                     # Note: upstream_proxy_custom_header_names has been validated with is_valid_json_string_array
                     normalizedValue = json.dumps([(str(item.encode('utf8')) if type(item) == unicode else item) for item in json.loads(normalizedValue)])
                     json_log['upstream_proxy_custom_header_names'] = normalizedValue
+                elif key in ['tunnel_whole_device', 'meek_transformed_host_name', 'connected', 'fronting_enabled_sni']:
+                  # Submitted values could be "0" or "1", but need to be logged as booleans
+                  if normalizedValue == "1":
+                    json_log[key] = True
+                  else:
+                    json_log[key] = False
                 else:
                     json_log[key] = normalizedValue
 
