@@ -60,12 +60,14 @@ DEFAULT_LANGS = {
     'my': 'my',         # Burmese
     'nb_NO': 'nb',      # Norwegian
     'nl': 'nl',         # Dutch
+    'om': 'om',         # Afaan Oromoo
     'pt_BR': 'pt_BR',   # Portuguese-Brazil
     'pt_PT': 'pt_PT',   # Portuguese-Portugal
     'ru': 'ru',         # Russian
     'sn': 'sn',         # Shona
     'tg': 'tg',         # Tajik
     'th': 'th',         # Thai
+    'ti': 'ti',         # Tigrinya
     'tk': 'tk',         # Turkmen
     'tr': 'tr',         # Turkish
     'ug': 'ug@Latn',    # Uighur (latin script)
@@ -103,12 +105,14 @@ ANDROID_LANGS = {
     'my': 'my',
     'nb_NO': 'nb',
     'nl': 'nl',
+    'om': 'om',
     'pt_BR': 'pt-rBR',
     'pt_PT': 'pt',
     'ru': 'ru',
     'sn': 'sn',
     'tg': 'tg',
     'th': 'th',
+    'ti': 'ti',
     'tk': 'tk',
     'tr': 'tr',
     'uk': 'uk',

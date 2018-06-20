@@ -185,10 +185,6 @@
     "message": "Screenshot of the Android security setting that allows installation of non-Play Store apps",
     "description": "alt text for an image"
   },
-  "faq-information-collected-question": {
-    "message": "What user information does Psiphon collect?",
-    "description": "FAQ question."
-  },
   "faq-information-collected-answer-redirect": {
     "message": "Please see our <a href=\"privacy.html\">Privacy Policy</a> to learn about what information we collect.",
     "description": "This is the FAQ answer to the question 'What info does Psiphon collect?' The user needs to go to a separate page to see the full answer."
@@ -829,6 +825,22 @@
   "license-termination-terms-of-service-violations-para-2": {
     "message": "As the user, you are free to terminate this license agreement at any time by discontinuing use of any and all parts of the Psiphon service, and deleting all instances of the software application from your device."
   },
+  "license-psicash-header": {
+    "message": "Use of PsiCash",
+    "description": "Subsection header on the License page. 'PsiCash' should not be translated or transliterated."
+  },
+  "license-psicash-item-1": {
+    "message": "If there is no PsiCash activity on your device for one year, then Psiphon reserves the right to cancel your PsiCash.",
+    "description": "List item under the 'Use of PsiCash' subsection of the License page. The essence of this item is that if a user doesn't earn or spend PsiCash for a year, then Psiphon might delete it. 'PsiCash' should not be translated or transliterated."
+  },
+  "license-psicash-item-2": {
+    "message": "If you lose track of your PsiCash, for example by losing your device, then you acknowledge that Psiphon will not be able to correct this mistake and restore your PsiCash.",
+    "description": "List item under the 'Use of PsiCash' subsection of the License page. The essence of this item is that Psiphon won't (and can't) restore a user's PsiCash if the user loses the device that that PsiCash is associated with. 'PsiCash' should not be translated or transliterated."
+  },
+  "license-psicash-item-3": {
+    "message": "Psiphon reserves the right to change the rewards exchangeable for PsiCash at any time.",
+    "description": "List item under the 'Use of PsiCash' subsection of the License page. The essence of this item is that Psiphon may change what things -- like Speed Boost -- cost in PsiCash. 'PsiCash' should not be translated or transliterated."
+  },
   "about-who-we-are-head": {
     "message": "Who We Are"
   },
@@ -1157,23 +1169,55 @@
     "message": "Psiphon is designed to provide you with open access to online content. Psiphon does not increase your online privacy, and should not be considered or used as an online security tool."
   },
   "faq-information-collected-question": {
-    "message": "What user information does Psiphon collect?"
-  },
-  "faq-information-collected-answer-head-1": {
-    "message": "Psiphon Servers"
-  },
-  "faq-information-collected-answer-head-2": {
-    "message": "Feedback"
-  },
-  "faq-information-collected-answer-head-3": {
-    "message": "Email Responder"
-  },
-  "faq-information-collected-answer-head-4": {
-    "message": "App Stores",
-    "description": "this is referring to the general idea of app stores, like the Google Play Store, Amazon AppStore, Apple App Store"
+    "message": "What user information does Psiphon collect?",
+    "description": "FAQ question."
   },
   "faq-information-collected-answer-para-9": {
     "message": "From time to time Psiphon may have to record additional information in order to resolve a problem with our service. When this occurs, we will add an entry to the <a href=\"./privacy-bulletin.html\">Privacy Bulletin</a> describing what was recorded, how long it was kept, and why."
+  },
+  "privacy-information-collected-client-head": {
+    "message": "Psiphon Client Software",
+    "description": "Sub-heading on the Privacy Policy page above the info about what user information is collected by the Psiphon client software"
+  },
+  "privacy-information-collected-client-advertising-networks-head": {
+    "message": "Advertising Networks",
+    "description": "Sub-heading for section describing use of Advertising Networks and what info they collect"
+  },
+  "privacy-information-collected-client-advertising-networks-para-1": {
+    "message": "We sometimes use advertisements to support our service, which may use technology such as cookies and web beacons. Our advertising partners' use of cookies enable them and their partners to serve ads based on your usage data. Any information collected through this process is handled under the terms of our advertising partners' privacy policies:"
+  },
+  "privacy-information-collected-client-advertising-networks-para-2": {
+    "message": "You can opt out of the use of cookies for interest-based advertising by visiting:"
+  },
+  "privacy-information-collected-websites-head": {
+    "message": "Psiphon Websites",
+    "description": "Sub-heading on the Privacy Policy page above the info about what user information is collected by the Psiphon websites"
+  },
+  "privacy-information-collected-websites-google-analytics-head": {
+    "message": "Google Analytics",
+    "description": "Sub-heading for section describing use of Google Analytics and what info they collect"
+  },
+  "privacy-information-collected-websites-google-analytics-para-1": {
+    "message": "We use Google Analytics on some of our websites to collect information about usage. The information collected by Google Analytics will only be used for statistical analysis related to your browsing behaviour on this specific site. The information we obtain from Google Analytics is not personally identifying, nor is it combined with information from other sources to create personally identifying information."
+  },
+  "privacy-information-collected-websites-google-analytics-para-2": {
+    "message": "Google Analytics plants a permanent cookie on your web browser to identify you as a unique user the next time you visit the site, but this cookie cannot be used by anyone except Google, and the data collected cannot be altered or retrieved by services from other domains."
+  },
+  "privacy-information-collected-websites-google-analytics-para-3": {
+    "message": "Google’s ability to use and share information collected by Google Analytics about your visits to this site is restricted by the <a href=\"http://www.google.ca/analytics/terms/us.html\" target=\"_blank\">Google Analytics Terms of Use</a> and the <a href=\"http://www.google.com/policies/privacy/\" target=\"_blank\">Google Privacy Policy</a>. You may choose to opt out by turning off cookies in the preferences settings in your web browser."
+  },
+  "privacy-information-collected-s3-logging-head": {
+    "message": "Storage Access Logging",
+    "description": "Sub-heading for section describing use of logging access to data storage (aka S3 bucket logging). The way to read this is 'creation of logs for user accesses to data storage'. Psiphon 'stores' websites, downloads, and upgrades (the 'data') in Amazon S3 (the 'storage'). Users 'access' the data storage. And, somtimes, we 'log' those accesses. (For example, if we suspect attackers are accessing the storage, or if it seems the storage is blocked by a country.)"
+  },
+  "privacy-information-collected-s3-logging-para-1": {
+    "message": "We use Amazon S3 to store assets such as website files and Psiphon server discovery lists. We sometimes enable logging of downloads of these files. Analyzing these logs helps us to answer questions like \"how many users are starting but not completing the download of the server discovery list?\", \"how is the downloaded data split between website assets and server discovery?\", and \"is an attacker making a denial-of-service attempt against our websites?\""
+  },
+  "privacy-information-collected-s3-logging-para-2": {
+    "message": "S3 <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/dev/LogFormat.html\" target=\"_blank\">bucket access logs</a> contain IP addresses, user agents, and timestamps. These logs are stored in S3 itself, so Amazon has access to these logs. (However, Amazon already serves the files, so they can already access this information.) Psiphon developers will download the logs, aggregate and analyze the data, and then delete the logs. Raw data will be kept only long enough to aggregate it and will not be shared with third parties."
+  },
+  "faq-information-collected-answer-head-1": {
+    "message": "Psiphon Servers"
   },
   "faq-information-collected-answer-para-1": {
     "message": "We collect the following data to find out how well Psiphon is working, what sites are popular, and what propagation strategies are effective. This information is shared with our partners so that they can see, for example, how often their sites are visited through Psiphon and from which countries."
@@ -1208,6 +1252,145 @@
   "faq-information-collected-answer-para-5": {
     "message": "All statistics shared with sponsors are further aggregated by date, sponsor, and region."
   },
+  "privacy-information-collected-vpndata-head": {
+    "message": "User VPN Data",
+    "description": "Sub-heading on the Privacy Policy page for the section describing handling of user traffic data through the Psiphon VPN"
+  },
+  "privacy-information-collected-vpndata-whycare-subhead": {
+    "message": "Why should you care?",
+    "description": "Sub-heading in the 'User VPN Data' section of the Privacy Policy page. The section describes why it's important for users to consider what a VPN does with their traffic data."
+  },
+  "privacy-information-collected-vpndata-whycare-para-1": {
+    "message": "When using a VPN or proxy you should be concerned about what the provider can see in your data, collect from it, and do to it. For some web and email connections, it is theoretically possible for a VPN to see, collect, and modify the contents.",
+    "description": "Paragraph text in the 'Why should you care?' subsection of the 'User VPN Data' section of the Privacy page."
+  },
+  "privacy-information-collected-vpndata-whatdoespsiphondowith-subhead": {
+    "message": "What does Psiphon do with your VPN data?",
+    "description": "Sub-heading in the 'User VPN Data' section of the Privacy Policy page. The section describes what Psiphon does with the little bit of VPN data that it collects stats from."
+  },
+  "privacy-information-collected-vpndata-whatdoespsiphondowith-para-1": {
+    "message": "Psiphon looks at your data only to the degree necessary to collect statistics about the usage of our system. We record the total bytes transferred for a user connection, as well as the bytes transferred for some specific domains. These statistics are discarded after 60 days.",
+    "description": "Paragraph text in the 'What does Psiphon do with your VPN data?' subsection of the 'User VPN Data' section of the Privacy page."
+  },
+  "privacy-information-collected-vpndata-whatdoespsiphondowith-para-2": {
+    "message": "Psiphon does not inspect or record full URLs (only domain names), and does not further inspect your data. Psiphon does not modify your data as it passes through the VPN.",
+    "description": "Paragraph text in the 'What does Psiphon do with your VPN data?' subsection of the 'User VPN Data' section of the Privacy page."
+  },
+  "privacy-information-collected-vpndata-whatdoespsiphondowith-para-3": {
+    "message": "Even this coarse data would be difficult to link back to you, since we immediately convert your IP address to geographical info and then discard the IP. Nor is any other identifying information stored.",
+    "description": "Paragraph text in the 'What does Psiphon do with your VPN data?' subsection of the 'User VPN Data' section of the Privacy page."
+  },
+  "privacy-information-collected-vpndata-whydoespsiphonneed-subhead": {
+    "message": "Why does Psiphon need these statistics?",
+    "description": "Sub-heading in the 'User VPN Data' section of the Privacy Policy page. The section describes why Psiphon needs VPN data stats."
+  },
+  "privacy-information-collected-vpndata-whydoespsiphonneed-para-1-list-start": {
+    "message": "This data is used by us to determine how our network is being used. This allows us to do things like:",
+    "description": "Paragraph text in the 'Why does Psiphon need these statistics?' subsection of the 'User VPN Data' section of the Privacy page. This paragraph serves as preamble for a detailed list, which is why it ends with a colon."
+  },
+  "privacy-information-collected-vpndata-whydoespsiphonneed-para-1-item-1": {
+    "message": "Estimate future costs: The huge amount of user data we transfer each month is a major factor in our costs. It is vital for us to see and understand usage fluctuations.",
+    "description": "Bullet list text under 'Why does Psiphon need these statistics?' subsection of the 'User VPN Data' section of the Privacy page."
+  },
+  "privacy-information-collected-vpndata-whydoespsiphonneed-para-1-item-2": {
+    "message": "Optimize for traffic types: Video streaming has different network requirements than web browsing does, which is different than chat, which is different than voice, and so on. Statistics about the number of bytes transferred for some major media providers helps us to understand how to provide the best experience to our users.",
+    "description": "Bullet list text under 'Why does Psiphon need these statistics?' subsection of the 'User VPN Data' section of the Privacy page."
+  },
+  "privacy-information-collected-vpndata-whydoespsiphonneed-para-1-item-3": {
+    "message": "Determine the nature of major censorship events: Sites and services often get blocked suddenly and without warning, which can lead to huge variations in regional usage of Psiphon. For example, we had up to 20x surges in usage within a day when <a href=\"https://blog-en.psiphon.ca/2016/07/psiphon-usage-surges-as-brazil-blocks.html\" target=\"_blank\">Brazil blocked WhatsApp</a> or <a href=\"https://blog-en.psiphon.ca/2016/11/social-media-and-internet-ban-in-turkey.html\" target=\"_blank\">Turkey blocked social media</a>.",
+    "description": "Bullet list text under 'Why does Psiphon need these statistics?' subsection of the 'User VPN Data' section of the Privacy page. If available in your language, the blog post URLs should be updated to the localized post."
+  },
+  "privacy-information-collected-vpndata-whydoespsiphonneed-para-1-item-4": {
+    "message": "Understand who we need to help: Some sites and services will never get blocked anywhere, some will always be blocked in certain countries, and some will occasionally be blocked in some countries. To make sure that our users are able to communicate and learn freely, we need to understand these patterns, see who is affected, and work with partners to make sure their services work best with Psiphon.",
+    "description": "Bullet list text under 'Why does Psiphon need these statistics?' subsection of the 'User VPN Data' section of the Privacy page. (English is using 'who' instead of 'whom' to reflect common idiom.)"
+  },
+  "privacy-information-collected-vpndata-whopsiphonshareswith-subhead": {
+    "message": "Who does Psiphon share these statistics with?",
+    "description": "Sub-heading in the 'User VPN Data' section of the Privacy Policy page. The section describes who Psiphon shares VPN data stats. The answer will be organizations and not specific people, in case that makes a difference in your language."
+  },
+  "privacy-information-collected-vpndata-whopsiphonshareswith-para-1": {
+    "message": "When sharing with third parties, Psiphon only ever provides coarse, aggregate domain-bytes statistics. We never share per-session information or any other possibly-identifying information.",
+    "description": "Paragraph text in the 'Who does Psiphon share these statistics with?' subsection of the 'User VPN Data' section of the Privacy page."
+  },
+  "privacy-information-collected-vpndata-whopsiphonshareswith-para-2": {
+    "message": "This sharing is typically done with services or organizations we collaborate with — as <a href=\"http://www.dw.com/en/psiphon-helps-dodge-the-online-trackers/a-16765092\" target=\"_blank\">we did with DW</a> a few years ago. These statistics help us and them answer questions like, “how many bytes were transferred through Psiphon for DW.com to all users in Iran in April?”",
+    "description": "Paragraph text in the 'Who does Psiphon share these statistics with?' subsection of the 'User VPN Data' section of the Privacy page."
+  },
+  "privacy-information-collected-vpndata-whopsiphonshareswith-para-3": {
+    "message": "Again, we specifically do not give detailed or potentially user-identifying information to partners or any other third parties.",
+    "description": "Paragraph text in the 'Who does Psiphon share these statistics with?' subsection of the 'User VPN Data' section of the Privacy page."
+  },
+  "privacy-information-collected-psicash-para-1": {
+    "message": "The PsiCash system only collects information necessary for the functioning of the system, monitoring the health of the system, and ensuring the security of the system.",
+    "description": "Paragraph text in the 'PsiCash' section of the Privacy page. 'PsiCash' must not be translated or transliterated."
+  },
+  "privacy-information-collected-psicash-para-2-list-start": {
+    "message": "The PsiCash server stores per-user information to allow for operation of the system, including:",
+    "description": "Paragraph text in the 'PsiCash' section of the Privacy page. This is preamble to a detailed bullet list. 'PsiCash' must not be translated or transliterated."
+  },
+  "privacy-information-collected-psicash-para-2-item-1": {
+    "message": "generated user access tokens",
+    "description": "Bullet list item in the 'operation of the system' list. This item refers to randomly generated values that allow a user to access and utilize the system."
+  },
+  "privacy-information-collected-psicash-para-2-item-2": {
+    "message": "balance",
+    "description": "Bullet list item in the 'operation of the system' list. This item refers to the user PsiCash balance -- i.e., how much they have available to spend."
+  },
+  "privacy-information-collected-psicash-para-2-item-3": {
+    "message": "last activity timestamp",
+    "description": "Bullet list item in the 'operation of the system' list. This item refers to the date and time that the user last earned or spent PsiCash."
+  },
+  "privacy-information-collected-psicash-para-2-item-4": {
+    "message": "PsiCash earning history, including what the actions the rewards were granted for",
+    "description": "Bullet list item in the 'operation of the system' list. This item refers to transaction history of the user earning PsiCash. 'PsiCash' must not be translated or transliterated."
+  },
+  "privacy-information-collected-psicash-para-2-item-5": {
+    "message": "PsiCash spending history, including what purchases were made",
+    "description": "Bullet list item in the 'operation of the system' list. This item refers to transaction history of the user spending PsiCash, such as by buying Speed Boost. 'PsiCash' must not be translated or transliterated."
+  },
+  "privacy-information-collected-psicash-para-3-list-start": {
+    "message": "In the user's web browser, some data is stored to allow for earning rewards and making purchases. This data includes:",
+    "description": "Paragraph text in the 'PsiCash' section of the Privacy page. This is preamble to a detailed bullet list. 'PsiCash' must not be translated or transliterated."
+  },
+  "privacy-information-collected-psicash-para-3-item-1": {
+    "message": "generated user access tokens",
+    "description": "Bullet list item in the 'data stored in web browser' list. This item refers to randomly generated values that allow a user to access and utilize the system."
+  },
+  "privacy-information-collected-psicash-para-3-item-2": {
+    "message": "when a PsiCash reward is allowed to be claimed again",
+    "description": "Bullet list item in the 'data stored in web browser' list. PsiCash earning rewards can only be claimed every so often in the web browser, so this refers to the date-time when the user is next allowed to claim a reward. 'PsiCash' must not be translated or transliterated."
+  },
+  "privacy-information-collected-psicash-para-4-list-start": {
+    "message": "For monitoring system health and security, system activity data is collected and aggregated. This data includes:",
+    "description": "Paragraph text in the 'PsiCash' section of the Privacy page. This is preamble to a detailed bullet list. 'PsiCash' must not be translated or transliterated."
+  },
+  "privacy-information-collected-psicash-para-4-item-1": {
+    "message": "user country",
+    "description": "Bullet list item in the 'system health and security' list. This item refers to the country from which a user was connecting when he/she performed an action."
+  },
+  "privacy-information-collected-psicash-para-4-item-2": {
+    "message": "balance",
+    "description": "Bullet list item in the 'operation of the system' list. This item refers to the user PsiCash balance -- i.e., how much they have available to spend."
+  },
+  "privacy-information-collected-psicash-para-4-item-3": {
+    "message": "user agent string",
+    "description": "Bullet list item in the 'operation of the system' list. This item refers to 'user agent string' of the client software used to perform an action. This can be either a web browser or the Psiphon client itself."
+  },
+  "privacy-information-collected-psicash-para-4-item-4": {
+    "message": "client version",
+    "description": "Bullet list item in the 'operation of the system' list. This item refers to the version of the Psiphon app."
+  },
+  "privacy-information-collected-psicash-para-4-item-5": {
+    "message": "PsiCash earning and spending details",
+    "description": "Bullet list item in the 'operation of the system' list. This item refers to transaction history of the user earning and spending PsiCash. 'PsiCash' must not be translated or transliterated."
+  },
+  "privacy-information-collected-psicash-para-5": {
+    "message": "Individual user data is never shared with third parties. Coarse aggregate statistics may be shared, but never in a form that can possibly identify users.",
+    "description": "Paragraph text in the 'PsiCash' section of the Privacy page. 'PsiCash' must not be translated or transliterated."
+  },
+  "faq-information-collected-answer-head-2": {
+    "message": "Feedback"
+  },
   "faq-information-collected-answer-para-6": {
     "message": "When you choose to submit feedback through Psiphon you will have the option of including diagnostic data. We use this data to help us troubleshoot any problems you might be having and to help us keep Psiphon running smoothly. Sending this data is entirely optional. The data is encrypted before you send it, and can only be decrypted by us. The information in the data varies by platform, but it may include:"
   },
@@ -1238,8 +1421,8 @@
   "faq-information-collected-answer-para-8-item-3": {
     "message": "Whether your device is rooted"
   },
-  "faq-information-collected-answer-para-10": {
-    "message": "Note that if you get Psiphon from an \"app store\", such as the Google Play Store or Amazon AppStore, additional statistics may be collected by that store. For example, here is a description of what the Google Play Store collects:"
+  "faq-information-collected-answer-head-3": {
+    "message": "Email Responder"
   },
   "faq-information-collected-answer-para-11": {
     "message": "When you send an email request to our email auto-responder server, we are able to see your email address. While your email is being processed it is saved to the email server's disk, and it is deleted as soon as it is processed (usually in a few seconds). We do not allow your email address to be written to the system's log file."
@@ -1265,45 +1448,11 @@
   "faq-information-collected-answer-para-14": {
     "message": "If we need to diagnose a problem, we may enable full mail server logging for a short amount of time. If you send an email during that time, your email address will be written to the system log. Those logs are deleted after one week."
   },
-  "privacy-information-collected-client-head": {
-    "message": "Psiphon Client Software",
-    "description": "Sub-heading on the Privacy Policy page above the info about what user information is collected by the Psiphon client software"
+  "faq-information-collected-answer-head-4": {
+    "message": "App Stores",
+    "description": "this is referring to the general idea of app stores, like the Google Play Store, Amazon AppStore, Apple App Store"
   },
-  "privacy-information-collected-client-advertising-networks-head": {
-    "message": "Advertising Networks",
-    "description": "Sub-heading for section describing use of Advertising Networks and what info they collect"
-  },
-  "privacy-information-collected-client-advertising-networks-para-1": {
-    "message": "We sometimes use advertisements to support our service, which may use technology such as cookies and web beacons. Our advertising partners' use of cookies enable them and their partners to serve ads based on your usage data. Any information collected through this process is handled under the terms of our advertising partners' privacy policies:"
-  },
-  "privacy-information-collected-client-advertising-networks-para-2": {
-    "message": "You can opt out of the use of cookies for interest-based advertising by visiting:"
-  },
-  "privacy-information-collected-websites-head": {
-    "message": "Websites",
-    "description": "Sub-heading on the Privacy Policy page above the info about what user information is collected by the Psiphon websites"
-  },
-  "privacy-information-collected-websites-google-analytics-head": {
-    "message": "Google Analytics",
-    "description": "Sub-heading for section describing use of Google Analytics and what info they collect"
-  },
-  "privacy-information-collected-websites-google-analytics-para-1": {
-    "message": "We use Google Analytics on some of our websites to collect information about usage. The information collected by Google Analytics will only be used for statistical analysis related to your browsing behaviour on this specific site. The information we obtain from Google Analytics is not personally identifying, nor is it combined with information from other sources to create personally identifying information."
-  },
-  "privacy-information-collected-websites-google-analytics-para-2": {
-    "message": "Google Analytics plants a permanent cookie on your web browser to identify you as a unique user the next time you visit the site, but this cookie cannot be used by anyone except Google, and the data collected cannot be altered or retrieved by services from other domains."
-  },
-  "privacy-information-collected-websites-google-analytics-para-3": {
-    "message": "Google’s ability to use and share information collected by Google Analytics about your visits to this site is restricted by the <a href=\"http://www.google.ca/analytics/terms/us.html\" target=\"_blank\">Google Analytics Terms of Use</a> and the <a href=\"http://www.google.com/policies/privacy/\" target=\"_blank\">Google Privacy Policy</a>. You may choose to opt out by turning off cookies in the preferences settings in your web browser."
-  },
-  "privacy-information-collected-s3-logging-head": {
-    "message": "Storage Access Logging",
-    "description": "Sub-heading for section describing use of logging access to data storage (aka S3 bucket logging). The way to read this is 'creation of logs for user accesses to data storage'. Psiphon 'stores' websites, downloads, and upgrades (the 'data') in Amazon S3 (the 'storage'). Users 'access' the data storage. And, somtimes, we 'log' those accesses. (For example, if we suspect attackers are accessing the storage, or if it seems the storage is blocked by a country.)"
-  },
-  "privacy-information-collected-s3-logging-para-1": {
-    "message": "We use Amazon S3 to store assets such as website files and Psiphon server discovery lists. We sometimes enable logging of downloads of these files. Analyzing these logs helps us to answer questions like \"how many users are starting but not completing the download of the server discovery list?\", \"how is the downloaded data split between website assets and server discovery?\", and \"is an attacker making a denial-of-service attempt against our websites?\""
-  },
-  "privacy-information-collected-s3-logging-para-2": {
-    "message": "S3 <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/dev/LogFormat.html\" target=\"_blank\">bucket access logs</a> contain IP addresses, user agents, and timestamps. These logs are stored in S3 itself, so Amazon has access to these logs. (However, Amazon already serves the files, so they can already access this information.) Psiphon developers will download the logs, aggregate and analyze the data, and then delete the logs. Raw data will be kept only long enough to aggregate it and will not be shared with third parties."
+  "faq-information-collected-answer-para-10": {
+    "message": "Note that if you get Psiphon from an \"app store\", such as the Google Play Store or Amazon AppStore, additional statistics may be collected by that store. For example, here is a description of what the Google Play Store collects:"
   }
 }
